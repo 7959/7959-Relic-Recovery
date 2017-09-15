@@ -15,13 +15,11 @@ import java.util.Map;
 
 public abstract class RobotControl extends LinearOpMode {
     public class Wheels{
-        DcMotor[][] bottomMotors;
+        DcMotor[][] bottomMotors = new DcMotor[1][1];
         //We are creating an array for our motors, it will allow use to for statements easily to control the motors;
         //[0][0] is the back left motor and we will treat the rest as if the array values were Xs and Ys Ex. bottomMotor[1][0] is top
 
-
-        Wheels(){
-            bottomMotors = new DcMotor[1][1];
+        public void init(){
             //Set direction of your motors x and y cordinates in the second part of function
             //Change 'F' to 'R' to reverse
             setDirection('F', 0, 0);
@@ -39,8 +37,6 @@ public abstract class RobotControl extends LinearOpMode {
             mapMotor(bottomMotors[1][0], "Back Right");
             mapMotor(bottomMotors[1][1], "Front Right");
         }
-
-        //Avoid using this function
         public void directPower(int x, int y, double power){
             if((x == 0 || x == 1) && (y == 0 || y == 1)){
                 bottomMotors[x][y].setPower(power);
@@ -65,7 +61,7 @@ public abstract class RobotControl extends LinearOpMode {
         }
     }
     public class CameraControl{
-
+        VuforiaLocalizer
     }
 
 }
