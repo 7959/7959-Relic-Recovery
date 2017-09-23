@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
@@ -17,6 +18,10 @@ import java.util.Map;
 
 public abstract class RobotControl extends LinearOpMode {
     CodeError codeError;
+
+
+
+
     public class Wheels{
         DcMotor[][] bottomMotors = new DcMotor[1][1];
         //We are creating an array for our motors, it will allow use to for statements easily to control the motors;
@@ -32,8 +37,16 @@ public abstract class RobotControl extends LinearOpMode {
             setDirection('F', 1, 1);
 
 
-
+            resetEncoders();
             map();
+        }
+        private void resetEncoders(){
+            for(int i = 0;i < 2;i++){
+                for(int p = 0; p < 2 ;p++){
+                    bottomMotors[i][p].setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                    bottomMotors[i][p].setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+                }
+            }
         }
         private void map(){
             mapMotor(bottomMotors[0][0], "Back Left");
@@ -73,6 +86,51 @@ public abstract class RobotControl extends LinearOpMode {
             telemetry.update();
             requestOpModeStop();
         }
+    }
+
+
+    public class Claw{
+        final private double openPos = 0;
+        final private double closePos = 1;
+        private String hardwarename;
+        private String hardwarename2;
+        private boolean isOne;
+        public boolean isOpen;
+        Servo s;
+        Servo ss;
+        Claw(String name){
+            isOne = true;
+            hardwarename = name;
+        }
+        Claw(String name, String secondname){
+            isOne = false;
+            hardwarename = name;
+            hardwarename2 = secondname;
+        }
+        public void init(){
+
+            s = hardwareMap.servo.get(hardwarename);
+            if(!isOne){
+                s = hardwareMap.servo.get(hardwarename);
+                ss = hardwareMap.servo.get(hardwarename2);
+            }
+            if(s.getPosition() == openPos) isOpen = true;
+            else isOpen = false;
+        }
+        public void close(){
+            isOpen = false;
+            s.setPosition(closePos);
+            if(!isOne){
+                ss.setPosition(closePos);
+            }
+        }
+        public void open(){
+            isOpen = true;
+            s.setPosition(openPos);
+            if(!isOne) ss.setPosition(openPos);
+        }
+
+
     }
 
 
