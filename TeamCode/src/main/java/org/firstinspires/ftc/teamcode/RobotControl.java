@@ -1,8 +1,10 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gyroscope;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -18,11 +20,17 @@ import java.util.Map;
 
 public abstract class RobotControl extends LinearOpMode {
     CodeError codeError;
+    ModernRoboticsI2cGyro Gyro; // Replace later
 
+    public class Sensors{
+        public void mapandcalgyro(String name){
 
-
+        }
+    }
 
     public class Wheels{
+        public double Rdirection;
+        public double Cdirection;
         DcMotor[][] bottomMotors = new DcMotor[1][1];
         //We are creating an array for our motors, it will allow use to for statements easily to control the motors;
         //[0][0] is the back left motor and we will treat the rest as if the array values were Xs and Ys Ex. bottomMotor[1][0] is top
@@ -39,6 +47,37 @@ public abstract class RobotControl extends LinearOpMode {
 
             resetEncoders();
             map();
+        }
+        public void gyrodrive(double xVel,double yVel, double angle, double time){
+            double t = getRuntime() + time;
+            double angletoturn;
+            while(t > getRuntime()){
+                angletoturn = Gyro.getIntegratedZValue() - angle;
+                angletoturn = angletoturn/100;
+                bottomMotors[0][0].setPower(xVel + angletoturn);
+                bottomMotors[1][1].setPower(-xVel + angletoturn);
+                bottomMotors[1][0].setPower(yVel + angletoturn);
+                bottomMotors[1][0].setPower(-yVel + angletoturn);
+            }
+        }
+        public void vectorDrivetime(double xVel, double yVel, double AngularVelocity, double time){
+            //add in Gyroscopic correction later if time
+            //Base vectors consist of the maximum linear velocity a each wheel as the x and y directions
+            //Angular velocity is added by adding power in a single direction to every motor. Vectors x and y cancel out and it will rotate.
+            //[0][0] pos x vector
+            //[1][1] neg x
+            //[0][1] neg y
+            //[1][0] pos y
+            Rdirection = Math.atan2(yVel, xVel) - 45;
+            Cdirection = Math.atan2(yVel, xVel);
+            double t = getRuntime()+ time;
+            while(t > getRuntime()) {
+                bottomMotors[0][0].setPower(xVel + AngularVelocity);
+                bottomMotors[1][1].setPower(-xVel + AngularVelocity);
+                bottomMotors[1][0].setPower(yVel + AngularVelocity);
+                bottomMotors[1][0].setPower(-yVel + AngularVelocity);
+            }
+            stopMotors();
         }
         private void resetEncoders(){
             for(int i = 0;i < 2;i++){
@@ -58,6 +97,12 @@ public abstract class RobotControl extends LinearOpMode {
             if((x == 0 || x == 1) && (y == 0 || y == 1)){
                 bottomMotors[x][y].setPower(power);
             }
+        }
+        public void stopMotors(){
+            bottomMotors[0][0].setPower(0);
+            bottomMotors[1][1].setPower(0);
+            bottomMotors[1][0].setPower(0);
+            bottomMotors[1][0].setPower(0);
         }
 
         public void mapMotor(DcMotor motor, String name){
