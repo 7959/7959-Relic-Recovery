@@ -1,36 +1,25 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Gyroscope;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.internal.android.dex.Code;
-
-import java.util.Map;
 
 /**
  * Created by Robi on 9/15/2017.
  */
 
 public abstract class RobotControl extends LinearOpMode {
-    CodeError codeError;
+    RobotUtil robotUtil;
     ModernRoboticsI2cGyro Gyro; // Replace later
-
-    public class Sensors{
-        public void mapandcalgyro(String name){
-
-        }
-    }
 
     public class Wheels{
         public double Rdirection;
         public double Cdirection;
+        public double speed;
         DcMotor[][] bottomMotors = new DcMotor[1][1];
         //We are creating an array for our motors, it will allow use to for statements easily to control the motors;
         //[0][0] is the back left motor and we will treat the rest as if the array values were Xs and Ys Ex. bottomMotor[1][0] is top
@@ -60,6 +49,22 @@ public abstract class RobotControl extends LinearOpMode {
                 bottomMotors[1][0].setPower(-yVel + angletoturn);
             }
         }
+        final double angletranslation = Math.PI/2;
+        public void Controldrive(double xInput, double yInput, double AngularVelcoityInput){
+
+            double mag = Math.sqrt(xInput*xInput + yInput*yInput);
+            double theta = Math.atan2(yInput, xInput);
+
+            double yVel = mag * Math.sin(theta- angletranslation);
+            double xVel = mag * Math.cos(theta- angletranslation);
+
+            bottomMotors[0][0].setPower(xVel + AngularVelcoityInput);
+            bottomMotors[1][1].setPower(-xVel + AngularVelcoityInput);
+            bottomMotors[1][0].setPower(yVel + AngularVelcoityInput);
+            bottomMotors[1][0].setPower(-yVel + AngularVelcoityInput);
+        }
+
+
         public void vectorDrivetime(double xVel, double yVel, double AngularVelocity, double time){
             //add in Gyroscopic correction later if time
             //Base vectors consist of the maximum linear velocity a each wheel as the x and y directions
@@ -68,7 +73,7 @@ public abstract class RobotControl extends LinearOpMode {
             //[1][1] neg x
             //[0][1] neg y
             //[1][0] pos y
-            Rdirection = Math.atan2(yVel, xVel) - 45;
+            Rdirection = Math.atan2(yVel, xVel) - angletranslation;
             Cdirection = Math.atan2(yVel, xVel);
             double t = getRuntime()+ time;
             while(t > getRuntime()) {
@@ -79,6 +84,7 @@ public abstract class RobotControl extends LinearOpMode {
             }
             stopMotors();
         }
+
         private void resetEncoders(){
             for(int i = 0;i < 2;i++){
                 for(int p = 0; p < 2 ;p++){
@@ -122,11 +128,11 @@ public abstract class RobotControl extends LinearOpMode {
             }
             if((x == 1 || x == 0) && (x == 0 || x == 1) && (d != null)) {
                 bottomMotors[x][y].setDirection(d);
-            } else codeError.endOpMode("Directions not set correctly");
+            } else robotUtil.endOpMode("Directions not set correctly");
         }
     }
-    public class CodeError{
-        public void endOpMode(String message){
+    public class RobotUtil {
+        public void endOpMode(String message) {
             telemetry.addData("Error", message);
             telemetry.update();
             requestOpModeStop();
@@ -134,6 +140,42 @@ public abstract class RobotControl extends LinearOpMode {
     }
 
 
+    public class IMU{
+        IMU(){
+        }
+
+        BNO055IMU imu;
+
+        public void init(String name){
+            //Setts parameters for our IMU sensor.(We use Radians and meters per sec per sec)
+            BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+            parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
+            parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+            parameters.calibrationDataFile = "I don't have a file here yet, but imagine a .json file here";
+            parameters.loggingEnabled = true;
+            parameters.loggingTag = "IMU";
+            parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+
+            //Map it on the hardware map
+            imu = hardwareMap.get(BNO055IMU.class, name);
+
+            //Initialize the parameters
+            imu.initialize(parameters);
+
+
+        }
+    }
+
+    public class Accelerationintegrator implements Runnable{
+        double x;
+        double y;
+        double z;
+        Accelerationintegrator(IMU imu){
+
+        }
+        public void run(){
+        }
+    }
     public class Claw{
         final private double openPos = 0;
         final private double closePos = 1;
@@ -174,8 +216,15 @@ public abstract class RobotControl extends LinearOpMode {
             s.setPosition(openPos);
             if(!isOne) ss.setPosition(openPos);
         }
+    }
+    public class RobotTelemetry{
+        RobotTelemetry(){
 
+        }
 
+        public void createitem(String name, double number){
+
+        }
     }
 
 
