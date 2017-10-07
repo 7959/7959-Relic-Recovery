@@ -62,6 +62,7 @@ public abstract class RobotControl extends LinearOpMode {
             bottomMotors[1][1].setPower(-xVel + AngularVelcoityInput);
             bottomMotors[1][0].setPower(yVel + AngularVelcoityInput);
             bottomMotors[1][0].setPower(-yVel + AngularVelcoityInput);
+
         }
 
 
@@ -126,7 +127,7 @@ public abstract class RobotControl extends LinearOpMode {
                     break;
                 default: d = null;
             }
-            if((x == 1 || x == 0) && (x == 0 || x == 1) && (d != null)) {
+            if((x == 1 || x == 0) && (y == 0 || y == 1) && (d != null)) {
                 bottomMotors[x][y].setDirection(d);
             } else robotUtil.endOpMode("Directions not set correctly");
         }
@@ -137,6 +138,7 @@ public abstract class RobotControl extends LinearOpMode {
             telemetry.update();
             requestOpModeStop();
         }
+        
     }
 
 
@@ -162,6 +164,23 @@ public abstract class RobotControl extends LinearOpMode {
             //Initialize the parameters
             imu.initialize(parameters);
 
+
+        }
+    }
+    public class PositionEstimater implements Runnable{
+        PositionEstimater(){
+
+        }
+
+        public void run(){
+
+            ///Camera estimate(if available) more accurate
+
+            //Encoder estimate accuratish
+
+            //IMU estimate Not really accurate
+
+            //Look at data, and create weights for each method
 
         }
     }
@@ -217,14 +236,9 @@ public abstract class RobotControl extends LinearOpMode {
             if(!isOne) ss.setPosition(openPos);
         }
     }
-    public class RobotTelemetry{
-        RobotTelemetry(){
 
-        }
+    void createTelemetry(){
 
-        public void createitem(String name, double number){
-
-        }
     }
 
 
