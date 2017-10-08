@@ -14,11 +14,14 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 @Autonomous(name = "test")
 public class TestAuton extends AutonControl {
-   // Wheels drive = new Wheels();
-    //Claw relicClaw = new Claw("relicClaw");
-    //Claw cubeClaw = new Claw("Cubeclaw1", "Cubeclaw2");
-    //Claw cubeClaw2 = new Claw("UCubeclaw1", "UCubeclaw2");
+    Wheels drive = new Wheels();
+    Claw relicClaw = new Claw("relicClaw");
+    Claw cubeClaw = new Claw("Cubeclaw1", "Cubeclaw2");
+    Claw cubeClaw2 = new Claw("UCubeclaw1", "UCubeclaw2");
     VuforiaLocalizer camera;
+    IMU REVimu = new IMU();
+    Thread PosEstimate = new Thread(new PositionEstimater(1,0,0, REVimu));
+
     @Override
     public void runOpMode() throws InterruptedException {
         //Drive wheels initialization
@@ -26,7 +29,7 @@ public class TestAuton extends AutonControl {
 
         //Claw initialization
         //relicClaw.init();
-        //cubeClaw.init();
+        cubeClaw.init();
         //cubeClaw2.init();
 
 
@@ -34,7 +37,7 @@ public class TestAuton extends AutonControl {
         OpenGLMatrix lastLocation = null;
         int cameraID = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         VuforiaLocalizer.Parameters cameraPerameters = new VuforiaLocalizer.Parameters(cameraID);
-        cameraPerameters.vuforiaLicenseKey = "AXmn/o//////AAAAGaVJenZM3EctobrEv7BirWA5QeIVJcaZZQmNNF33reRfHWRwRwidjcVKbcKs0FS86DVG4WEjBSSoqXOdSoRUuOu9lrzum42nuBlFvNaCmRdXOe0BThEg/T2EjB1+NZTkB1MYu91eng7OtJs15MjOJDxkMQrPQPwhu3qnQiT48BbQ5+ciA8TJlFj1fvOCB8iNDw9/NKVGZZY8OYOOJFOZg4J9jcUqgQCw50YOn3XRuf6mvTcZGtfQm1NfKTrNIf1IIRJw7fg8p82vFrer7VNZNDKAh4gEZKeXU7CfT4WwguxQAtcsnuGqsQ068M1I2fW46aREVZbVSJS/x5T6Zrlh64hLQqvEouC0wakjj691deO7";
+        cameraPerameters.vuforiaLicenseKey = LiscenseKey;
         cameraPerameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
         this.camera = ClassFactory.createVuforiaLocalizer(cameraPerameters);
         VuforiaTrackables relicTrackables = this.camera.loadTrackablesFromAsset("RelicVuMark");
@@ -43,10 +46,17 @@ public class TestAuton extends AutonControl {
         relicTrackables.activate();
         //Couldn't find a way to get it in a function, so it looks real messy
 
-
+        REVimu.init("imu");
+        drive.init();
+        cubeClaw.init();
+        cubeClaw2.init();
         waitForStart();
+        REVimu.startIntegration(0,0,0);
 
 
+
+
+        PosEstimate.start();
         while (opModeIsActive()) {
 
             RelicRecoveryVuMark pictograph = RelicRecoveryVuMark.from(relicTemplate);

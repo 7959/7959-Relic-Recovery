@@ -8,6 +8,10 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
+
 /**
  * Created by Robi on 9/15/2017.
  */
@@ -15,6 +19,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 public abstract class RobotControl extends LinearOpMode {
     RobotUtil robotUtil;
     ModernRoboticsI2cGyro Gyro; // Replace later
+    final static DistanceUnit distanceUnit = DistanceUnit.INCH;
+    final static int positioninterval = 1000;//in ms
 
     public class Wheels{
         public double Rdirection;
@@ -37,7 +43,8 @@ public abstract class RobotControl extends LinearOpMode {
             resetEncoders();
             map();
         }
-        public void gyrodrive(double xVel,double yVel, double angle, double time){
+
+        public void gyrodrivetime(double xVel,double yVel, double angle, double time){
             double t = getRuntime() + time;
             double angletoturn;
             while(t > getRuntime()){
@@ -142,6 +149,7 @@ public abstract class RobotControl extends LinearOpMode {
     }
 
 
+
     public class IMU{
         IMU(){
         }
@@ -163,38 +171,19 @@ public abstract class RobotControl extends LinearOpMode {
 
             //Initialize the parameters
             imu.initialize(parameters);
-
-
         }
-    }
-    public class PositionEstimater implements Runnable{
-        PositionEstimater(){
-
+        public void startIntegration(double x, double y, double z){
+            imu.startAccelerationIntegration(new Position(distanceUnit,x,y,z,0), new Velocity(), positioninterval);
         }
-
-        public void run(){
-
-            ///Camera estimate(if available) more accurate
-
-            //Encoder estimate accuratish
-
-            //IMU estimate Not really accurate
-
-            //Look at data, and create weights for each method
-
+        public double[] getaccel(){
+            return new double[] {imu.getAcceleration().xAccel, imu.getAcceleration().yAccel , imu.getAcceleration().zAccel};
+        }
+        public double[] getPos(){
+            return new double[] {imu.getPosition().x, imu.getPosition().y, imu.getPosition().z};
         }
     }
 
-    public class Accelerationintegrator implements Runnable{
-        double x;
-        double y;
-        double z;
-        Accelerationintegrator(IMU imu){
 
-        }
-        public void run(){
-        }
-    }
     public class Claw{
         final private double openPos = 0;
         final private double closePos = 1;
@@ -207,6 +196,7 @@ public abstract class RobotControl extends LinearOpMode {
         Claw(String name){
             isOne = true;
             hardwarename = name;
+            
         }
         Claw(String name, String secondname){
             isOne = false;
