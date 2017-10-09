@@ -14,7 +14,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
  */
 @Autonomous(name = "test")
 public class TestAuton extends AutonControl {
-    Wheels drive = new Wheels();
+   // Wheels drive = new Wheels();
     Claw relicClaw = new Claw("relicClaw");
     Claw cubeClaw = new Claw("Cubeclaw1", "Cubeclaw2");
     Claw cubeClaw2 = new Claw("UCubeclaw1", "UCubeclaw2");
@@ -47,7 +47,7 @@ public class TestAuton extends AutonControl {
         //Couldn't find a way to get it in a function, so it looks real messy
 
         REVimu.init("imu");
-        drive.init();
+        //drive.init();
         cubeClaw.init();
         cubeClaw2.init();
         waitForStart();
