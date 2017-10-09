@@ -196,7 +196,7 @@ public abstract class RobotControl extends LinearOpMode {
         Claw(String name){
             isOne = true;
             hardwarename = name;
-            
+
         }
         Claw(String name, String secondname){
             isOne = false;
