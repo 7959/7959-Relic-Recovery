@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Oct 04 18:59:44 EDT 2017
+#Thu Oct 12 21:54:32 EDT 2017
 20.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 143.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 439.set=ANDROID_RESOURCE
@@ -88,7 +88,7 @@
 37.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_
 157.set=ASSET
 63.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-xxhdpi-v4\\ic_launcher.png
-186.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\digital_device_lynx.xml
+186.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\analog_outputs.xml
 96.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\blocks\\project_util.js
 82.set=ANDROID_RESOURCE
 221.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
@@ -296,7 +296,7 @@
 326.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\blocks\\android_text_to_speech.js
 222.set=ANDROID_RESOURCE
 39.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
-188.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\analog_outputs.xml
+188.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\feedback_shape_orange.xml
 65.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\fonts\\glyphicons-halflings-regular.svg
 100.set=ANDROID_RESOURCE
 98.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\icon_robotcontroller.png
@@ -474,7 +474,7 @@
 144.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_ftc_wifi_remembered_groups.xml
 112.set=ASSET
 54.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\images\\ftcServoController.png
-357.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\icon_menu.png
+357.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\lynx_module_configure_address_spin_item.xml
 87.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\java\\templates\\TemplateOpMode_Linear
 410.set=ANDROID_RESOURCE
 365.set=ASSET
@@ -489,7 +489,7 @@
 101.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\FtcSounds.html
 287.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 134.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\cube_mesh_fragment_shader.glsl
-305.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\matrices.xml
+305.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_configure_from_template.xml
 44.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_load.xml
 167.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\simple_device.xml
 91.set=ASSET
@@ -651,7 +651,7 @@
 10.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\fonts\\glyphicons-halflings-regular.ttf
 313.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\images\\ftcColorSensor.png
 26.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
-175.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\button_shape.xml
+175.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_swap_usb_devices.xml
 346.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\java\\js\\theme-monokai.js
 422.set=ASSET
 59.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
@@ -864,7 +864,7 @@
 38.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 167.set=ANDROID_RESOURCE
 64.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\blocks\\android_orientation.js
-187.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\feedback_shape_orange.xml
+187.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\digital_device_lynx.xml
 97.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_view_logs.xml
 92.set=ASSET
 222.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_
@@ -1040,7 +1040,7 @@
 102.set=ANDROID_RESOURCE
 159.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 53.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\raw\\chimeconnect.wav
-356.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\lynx_module_configure_address_spin_item.xml
+356.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable\\icon_menu.png
 69.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 86.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_config_wifi_direct.xml
 400.set=ANDROID_RESOURCE
@@ -1057,7 +1057,7 @@
 100.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\legacy.xml
 286.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 133.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\color_list_preference_line_item.xml
-304.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_configure_from_template.xml
+304.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\matrices.xml
 166.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\toolbox\\bno055imu_parameters.xml
 149.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 43.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\images\\ftcLED.png
@@ -1211,7 +1211,7 @@ count=447
 115.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
 312.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\blocks\\servo_controller.js
 25.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_
-174.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\layout\\activity_swap_usb_devices.xml
+174.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\resources-debug.ap_\\res\\drawable-hdpi-v4\\button_shape.xml
 345.file=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug\\java\\js\\antlr4\\atn\\ATNState.js
 412.set=ASSET
 58.base=C\:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\assets\\debug
