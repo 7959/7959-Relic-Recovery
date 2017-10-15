@@ -13,4 +13,7 @@ public class VufCameraAdv extends VufCameraBasic {
     public VufCameraAdv(HardwareMap hwmap){
         super(hwmap);
     }
+    public double[] getPos(){
+
+    }
 }
