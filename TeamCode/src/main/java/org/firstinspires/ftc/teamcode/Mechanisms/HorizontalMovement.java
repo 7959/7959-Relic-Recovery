@@ -18,7 +18,10 @@ public class HorizontalMovement {
         servo1.setDirection(dir1);
         servo2.setDirection(dir2);
     }
-    public void setPower(){
+    public void setPower(double power){
 
+        //** 1 may be negative
+        servo1.setPower(power);
+        servo2.setPower(power);
     }
 }

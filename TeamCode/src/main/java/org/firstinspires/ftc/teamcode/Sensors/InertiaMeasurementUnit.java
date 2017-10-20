@@ -5,6 +5,7 @@ import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
@@ -26,8 +27,11 @@ public class InertiaMeasurementUnit{
      *
      */
     HardwareMap hw;
-    BNO055IMU imu;
-    Orientation orientation;
+    public BNO055IMU imu;
+    public static Orientation orientation;
+    public static Acceleration acel;
+    public static Position pos;
+    public static Velocity vel;
     final DistanceUnit distanceUnit = DistanceUnit.METER;
     final BNO055IMU.AccelUnit accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
     final BNO055IMU.AngleUnit angleUnit = BNO055IMU.AngleUnit.RADIANS;
@@ -37,6 +41,9 @@ public class InertiaMeasurementUnit{
 
     public InertiaMeasurementUnit(HardwareMap hmap){
         hw = hmap;
+        vel = new Velocity();
+        acel = new Acceleration();
+        pos = new Position();
         setParameters("imu");
 
     }
@@ -59,22 +66,53 @@ public class InertiaMeasurementUnit{
         //Initialize the parameters
         imu.initialize(parameters);
     }
+    private void retreiveOriData(){
+        orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+    }
+    public void retreiveAcelData() {
+        acel = imu.getLinearAcceleration();
+    }
+    public void retreivePosData(){
+        pos = imu.getPosition();
+    }
+    public void retreiveVelData(){
+
+    }
+
     public void startIntegration(double x, double y, double z){
         imu.startAccelerationIntegration(new Position(distanceUnit,x,y,z,0), new Velocity(), positioninterval);
     }
-    public double[] getaccel(){
-        return new double[] {imu.getAcceleration().xAccel, imu.getAcceleration().yAccel , imu.getAcceleration().zAccel};
+    public double getyAcel(){
+        return imu.getAcceleration().yAccel;
     }
-    public double[] getPos(){
+    public Acceleration getaccel(){
+        retreiveAcelData();
+        return acel;
+    }
+    public Velocity getVel(){
+        retreiveVelData();
+        return vel;
+    }
+    public Position getPos(){
+        retreivePosData();
+        return this.pos;
+    }
+    /*public double[] getPos(){
+        retreivePosData();
         return new double[] {imu.getPosition().x, imu.getPosition().y, imu.getPosition().z};
-    }
+    }*/
+
+    // May change to Orintation class later
     public float getHeading() {
+        retreiveOriData();
         return orientation.firstAngle;
     }
     public float getRoll(){
+        retreiveOriData();
         return orientation.secondAngle;
     }
     public float getPitch(){
+        retreiveOriData();
         return orientation.thirdAngle;
     }
 }

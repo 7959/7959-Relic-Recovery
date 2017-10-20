@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.MiscUtils.RobotUtilities;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 
 /**
  * Created by Robi on 10/9/2017.
@@ -43,6 +43,7 @@ public class BasicWheels implements Wheels {
 
 
     public DcMotor[][] MotorWheels = new DcMotor[2][2];
+    public double powerFactor = 1;
 
 
     /**
@@ -151,6 +152,9 @@ public class BasicWheels implements Wheels {
         inputVector = RobotUtilities.PolartoCart(inputVector);
         //inputVector[1] = mag * Math.sin(theta- angletranslationR);
         //inputVector[0] = mag * Math.cos(theta- angletranslationR);
+        for(int i = 0; i < inputVector.length; i++){
+            inputVector[i]=inputVector[i] * powerFactor;
+        }
 
         MotorWheels[0][0].setPower(inputVector[0] + AngularVelocity);
         MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);
@@ -163,6 +167,9 @@ public class BasicWheels implements Wheels {
         Velvector[1] = Velvector[1] + angletranslationR;
         inputVector = RobotUtilities.PolartoCart(Velvector);
 
+        for(int i = 0; i < inputVector.length; i++){
+            inputVector[i]=inputVector[i] * powerFactor;
+        }
         MotorWheels[0][0].setPower(inputVector[0] + AngularVelocity);
         MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);
         MotorWheels[1][0].setPower(inputVector[1] + AngularVelocity);

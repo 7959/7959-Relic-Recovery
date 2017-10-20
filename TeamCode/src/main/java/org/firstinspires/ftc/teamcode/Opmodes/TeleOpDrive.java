@@ -1,9 +1,13 @@
 package org.firstinspires.ftc.teamcode.Opmodes;
 
+import android.graphics.drawable.VectorDrawable;
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.MiscUtils.RobotUtilities;
+import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 import org.firstinspires.ftc.teamcode.WheelControl.Wheels;
 import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
@@ -13,6 +17,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
  */
 @TeleOp(name = "imuDrive")
 public class TeleOpDrive extends LinearOpMode {
+    final double turnsensitivity = Math.PI/32;
     @Override
     public void runOpMode() throws InterruptedException {
         InertiaMeasurementUnit imu = new InertiaMeasurementUnit(hardwareMap);
@@ -20,10 +25,12 @@ public class TeleOpDrive extends LinearOpMode {
         waitForStart();
         double angle = 0;
         double input[] = new double[2];
+
+        waitForStart();
         while (opModeIsActive()){
             input[0] = gamepad1.left_stick_x;
             input[1] = gamepad1.left_stick_y;
-            angle = RobotUtilities.fixRads(angle + (gamepad1.right_stick_x * Math.PI/32));
+            angle = RobotUtilities.fixRads(angle + (gamepad1.right_stick_x * turnsensitivity));
             drive.movebyCart(input, angle);
 
         }

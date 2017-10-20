@@ -28,7 +28,7 @@ public class TestAuton extends AutonControl {
         //TeleOpDrive wheels initialization
        // drive.init();
 
-        //PinionClaw initialization
+        //DoubServ initialization
         //relicClaw.init();
         cubeClaw.init();
         //cubeClaw2.init();
