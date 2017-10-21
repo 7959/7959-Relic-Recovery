@@ -6,5 +6,13 @@
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\drawable-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\button_shape.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\drawable-hdpi-v4\\button_shape.xml"
     }
 ]

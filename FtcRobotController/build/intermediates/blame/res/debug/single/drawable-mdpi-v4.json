@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     }
