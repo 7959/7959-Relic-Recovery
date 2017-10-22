@@ -137,6 +137,8 @@ public class BasicWheels implements Wheels {
      * Transfers vector to a Polar point, translates the angle, then transfers it
      * back to add power to the motors
      * WheelsEncoded class will inherite this class. The rest will overwrite it.
+     *
+     *
      */
 
     public void movebyCart(double Velvector[], double AngularVelocity){
@@ -147,7 +149,7 @@ public class BasicWheels implements Wheels {
 
         inputVector = RobotUtilities.CarttoPolar(Velvector);
 
-        inputVector[1] = inputVector[1] + angletranslationR;
+        inputVector[1] += angletranslationR;
 
         inputVector = RobotUtilities.PolartoCart(inputVector);
         //inputVector[1] = mag * Math.sin(theta- angletranslationR);
@@ -164,11 +166,12 @@ public class BasicWheels implements Wheels {
 
     public void movebyPolar(double Velvector[], double AngularVelocity){
         double inputVector[];
-        Velvector[1] = Velvector[1] + angletranslationR;
+        Velvector[1] += angletranslationR;
         inputVector = RobotUtilities.PolartoCart(Velvector);
 
+
         for(int i = 0; i < inputVector.length; i++){
-            inputVector[i]=inputVector[i] * powerFactor;
+            inputVector[i]*= powerFactor;
         }
         MotorWheels[0][0].setPower(inputVector[0] + AngularVelocity);
         MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);

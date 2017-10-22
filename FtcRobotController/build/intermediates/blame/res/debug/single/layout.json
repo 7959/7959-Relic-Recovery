@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\analog_outputs.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\analog_outputs.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\simple_device.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\simple_device.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\analog_outputs.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\analog_outputs.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_config_wifi_direct.xml",
@@ -56,12 +56,12 @@
         "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\simple_device.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\red_line.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\red_line.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_generic_settings.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\activity_generic_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\red_line.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\red_line.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\digital_device.xml",
@@ -100,12 +100,12 @@
         "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\i2cs.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_load.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\activity_load.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\servo.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\servo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_load.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\activity_load.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ftc_wifi_channel_selector.xml",
@@ -124,12 +124,12 @@
         "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\port_attached_row.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\pwms.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\pwms.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_programming_mode.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\11f2a6a29c40c0d001b7e73ae2bdb46e597a616f\\output\\res\\layout\\activity_programming_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\pwms.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\pwms.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\header.xml",
@@ -140,28 +140,28 @@
         "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\device_interface_module.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ftc_lynx_address_update.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\activity_ftc_lynx_address_update.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_programming_mode.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\9505b13396651cc530b6078123c5e5dbe146deb6\\output\\res\\layout\\activity_programming_mode.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_blocks.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\9505b13396651cc530b6078123c5e5dbe146deb6\\output\\res\\layout\\activity_blocks.xml"
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ftc_lynx_address_update.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\activity_ftc_lynx_address_update.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_ftc_wifi_remembered_groups.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\activity_ftc_wifi_remembered_groups.xml"
     },
     {
-        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\file_info.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\file_info.xml"
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\activity_blocks.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\9505b13396651cc530b6078123c5e5dbe146deb6\\output\\res\\layout\\activity_blocks.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\servo.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\7e2e295a84ab60f00aa6caa9e4b387791df87545\\output\\res\\layout\\servo.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\file_info.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\58bb0e1a4992c68e361eafa2d0c766d72d8cbffd\\output\\res\\layout\\file_info.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\layout\\analog_inputs.xml",

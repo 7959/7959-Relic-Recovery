@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Sensors;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
@@ -13,6 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
+import org.firstinspires.ftc.teamcode.RobotMain;
 
 /**
  * Created by Robi on 10/12/2017.
@@ -32,9 +32,9 @@ public class InertiaMeasurementUnit{
     public static Acceleration acel;
     public static Position pos;
     public static Velocity vel;
-    final DistanceUnit distanceUnit = DistanceUnit.METER;
-    final BNO055IMU.AccelUnit accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-    final BNO055IMU.AngleUnit angleUnit = BNO055IMU.AngleUnit.RADIANS;
+    final DistanceUnit distanceUnit = RobotMain.distanceUnit;
+    final AngleUnit angleUnit = RobotMain.angleUnit;
+
     final int positioninterval = 1000;
 
 
@@ -50,10 +50,12 @@ public class InertiaMeasurementUnit{
 
 
     protected void setParameters(String name){
+        BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        BNO055IMU.AngleUnit IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
         //Setts parameters for our IMU sensor.(We use Radians and meters per sec per sec)
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit = angleUnit;
-        parameters.accelUnit = accelUnit;
+        parameters.angleUnit = IMUangleUnit;
+        parameters.accelUnit = IMUaccelUnit;
         parameters.calibrationDataFile = "I don't have a file here yet, but imagine a .json file here";
         parameters.loggingEnabled = true;
         parameters.loggingTag = "IMU";
@@ -65,9 +67,10 @@ public class InertiaMeasurementUnit{
 
         //Initialize the parameters
         imu.initialize(parameters);
+
     }
     private void retreiveOriData(){
-        orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
     }
     public void retreiveAcelData() {
         acel = imu.getLinearAcceleration();
