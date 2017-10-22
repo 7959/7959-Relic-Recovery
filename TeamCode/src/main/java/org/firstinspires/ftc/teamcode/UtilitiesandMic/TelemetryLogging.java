@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic;
 
+import org.firstinspires.ftc.robotcore.external.Func;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
@@ -8,6 +9,7 @@ import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
+import java.util.Stack;
 import java.util.concurrent.Callable;
 
 /**
@@ -20,22 +22,33 @@ public class TelemetryLogging {
     Velocity vel;
     Position pos;
 
+
+
+
+
     public InertiaMeasurementUnit imu;
     public TelemetryLogging(Telemetry t, InertiaMeasurementUnit imun){
         tele = t;
 
 
+    }
+    public void addline(String caption , TelemetryMethod info){
+        tele.addLine(caption+ String.format(": %b", info.create()));
+    }
 
-        this.imu = imun;
-        t.addAction(new Runnable() {
-            @Override
-            public void run() {
-                acel = imu.getaccel();
-                vel = imu.getVel();
-                pos = imu.getPos();
-            }
-        });
 
+
+
+
+
+
+    public void update(){
+
+    }
+
+
+    private <T> String convertToString(T info){
+        return null;
     }
 
 
