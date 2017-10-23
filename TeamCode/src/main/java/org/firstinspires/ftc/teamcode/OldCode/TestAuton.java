@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.OldCode.AutonControl;
 /**
  * Created by Robi on 9/14/2017.
  */
-@Autonomous(name = "test")
+@Deprecated
 public class TestAuton extends AutonControl {
    // BasicWheels drive = new BasicWheels();
     Claw relicClaw = new Claw("relicClaw");

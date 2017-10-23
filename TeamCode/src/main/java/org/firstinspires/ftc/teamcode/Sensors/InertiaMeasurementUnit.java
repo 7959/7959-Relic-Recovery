@@ -13,6 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.TeamIntegrator;
 
 /**
  * Created by Robi on 10/12/2017.
@@ -28,13 +29,14 @@ public class InertiaMeasurementUnit{
      */
     HardwareMap hw;
     public BNO055IMU imu;
-    public static Orientation orientation;
-    public static Acceleration acel;
-    public static Position pos;
-    public static Velocity vel;
+    
+    public Acceleration acel;
+    public Position pos;
+    public Velocity vel;
     final DistanceUnit distanceUnit = RobotMain.distanceUnit;
     final AngleUnit angleUnit = RobotMain.angleUnit;
 
+    private TeamIntegrator integrator;
     final int positioninterval = 1000;
 
 
@@ -56,30 +58,30 @@ public class InertiaMeasurementUnit{
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = IMUangleUnit;
         parameters.accelUnit = IMUaccelUnit;
-        parameters.calibrationDataFile = "I don't have a file here yet, but imagine a .json file here";
+        //parameters.calibrationDataFile = "I don't have a file here yet, but imagine a .json file here";
         parameters.loggingEnabled = true;
         parameters.loggingTag = "IMU";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        parameters.accelerationIntegrationAlgorithm = integrator;
 
         //Map it on the hardware map
         imu = hw.get(BNO055IMU.class, name);
-        orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
 
         //Initialize the parameters
         imu.initialize(parameters);
 
     }
-    private void retreiveOriData(){
-        orientation = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
+    public void retreiveOriData(){
+        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
     }
     public void retreiveAcelData() {
-        acel = imu.getLinearAcceleration();
+        RobotMain.accel = imu.getLinearAcceleration();
     }
     public void retreivePosData(){
-        pos = imu.getPosition();
+        RobotMain.pos = imu.getPosition();
     }
     public void retreiveVelData(){
-
+        RobotMain.vel = imu.getVelocity();
     }
 
     public void startIntegration(double x, double y, double z){
@@ -108,14 +110,14 @@ public class InertiaMeasurementUnit{
     // May change to Orintation class later
     public float getHeading() {
         retreiveOriData();
-        return orientation.firstAngle;
+        return RobotMain.ori.firstAngle;
     }
     public float getRoll(){
         retreiveOriData();
-        return orientation.secondAngle;
+        return RobotMain.ori.secondAngle;
     }
     public float getPitch(){
         retreiveOriData();
-        return orientation.thirdAngle;
+        return RobotMain.ori.thirdAngle;
     }
 }

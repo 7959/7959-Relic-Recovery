@@ -3,13 +3,14 @@ package org.firstinspires.ftc.teamcode.WheelControl;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.configuration.ExpansionHubMotorControllerPositionParams;
+import com.qualcomm.robotcore.hardware.configuration.ModernRoboticsMotorControllerParams;
 
 import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 
 /**
  * Created by Robi on 10/9/2017.
  */
-
 public class BasicWheels implements Wheels {
     /**
      * This class is the most basic function of drive.
@@ -57,6 +58,7 @@ public class BasicWheels implements Wheels {
      * Constructor sets up the direction, which motors to use, Zero power behavior, and Hardwaremap
     */
     public BasicWheels(HardwareMap HwMap){
+
         setDirection();
         setZeroPowerBehavior();
         map(HwMap);

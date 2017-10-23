@@ -15,7 +15,7 @@ public class AutonomousAlgorithm {
     AutonomousAlgorithm(HardwareMap map){
 
     }
-    public void GO(){
+    public void run(){
 
     }
 }

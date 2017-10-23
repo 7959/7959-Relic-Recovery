@@ -1,10 +1,7 @@
 package org.firstinspires.ftc.teamcode.WheelControl;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.AngularVelocity;
 import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 
 /**

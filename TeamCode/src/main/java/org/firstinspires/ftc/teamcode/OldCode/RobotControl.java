@@ -15,7 +15,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 /**
  * Created by Robi on 9/15/2017.
  */
-
+@Deprecated
 public abstract class RobotControl extends LinearOpMode {
     RobotUtil robotUtil;
     ModernRoboticsI2cGyro Gyro; // Replace later

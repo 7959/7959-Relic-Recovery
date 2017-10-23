@@ -24,6 +24,7 @@ public class DoubServ implements ClawInterface {
         rightstop = stopR;
         leftstop = stopL;
 
+
         leftS = hw.servo.get(name);
         rightS = hw.servo.get(name2);
         final boolean isOne = false;

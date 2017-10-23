@@ -29,9 +29,9 @@ public class TestDrive extends LinearOpMode{
             telemetry.update();
         }
         imu.retreiveAcelData();
-        acel = InertiaMeasurementUnit.acel;
-        vel = InertiaMeasurementUnit.vel;
-        pos = InertiaMeasurementUnit.pos;
+        acel = imu.acel;
+        vel = imu.vel;
+        pos = imu.pos;
         waitForStart();
         imu.startIntegration(0,0,0);
         while (opModeIsActive()) {
