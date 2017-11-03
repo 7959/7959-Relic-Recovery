@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Mechanisms.Claws.ClawInterface;
 /**
  * Created by Robi on 10/14/2017.
  */
-
+@Deprecated
 public class SingServ implements ClawInterface {
     Servo servo;
     double open;

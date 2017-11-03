@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class SoftwareServoController {
 
-    double openPos[];
-    double closePos[];
+    public double openPos[];
+    public double closePos[];
 
     public Servo servo[];
     HardwareMap hwMap;
@@ -37,6 +37,18 @@ public class SoftwareServoController {
         for(int i = 0; i < openPos.length;i++){
             servo[i].setPosition(openPos[i]);
         }
+    }
+    public void setpos(double... pos){
+        for(int i = 0;i < servo.length;i++){
+            servo[i].setPosition(pos[i]);
+        }
+    }
+    public double[] getCurrentPos(){
+        double Pos[] = new double[servo.length];
+        for (int i = 0;i < servo.length;i++){
+            Pos[i] = servo[i].getPosition();
+        }
+        return Pos;
     }
 
 

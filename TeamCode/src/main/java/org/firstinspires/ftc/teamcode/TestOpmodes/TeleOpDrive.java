@@ -28,8 +28,10 @@ public class TeleOpDrive extends LinearOpMode {
 
         waitForStart();
         while (opModeIsActive()){
+
             input[0] = gamepad1.left_stick_x;
             input[1] = gamepad1.left_stick_y;
+
             angle = RobotUtilities.fixRads(angle + (gamepad1.right_stick_x * turnsensitivity));
             drive.movebyCart(input, angle);
 

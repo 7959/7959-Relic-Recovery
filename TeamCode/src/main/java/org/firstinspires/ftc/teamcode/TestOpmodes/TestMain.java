@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.RobotMain;
 
 
@@ -24,10 +25,10 @@ public class TestMain extends LinearOpMode {
             main.imu.retreivePosData();
             main.imu.retreiveOriData();
 
-            telemetry.addData("acel", main.accel.xAccel);
-            telemetry.addData("Vel", main.vel.xVeloc);
-            telemetry.addData("Pos", main.pos.x);
-            telemetry.addData("Ori", main.ori.firstAngle);
+            telemetry.addData("Acel", main.accel.toUnit(DistanceUnit.METER).toString());
+            telemetry.addData("Vel", main.vel.toUnit(DistanceUnit.METER).toString());
+            telemetry.addData("Pos", main.pos.toUnit(DistanceUnit.METER).toString());
+            telemetry.addData("Ori", main.ori.toString());
             telemetry.addData("Acel time", main.imu.acel.acquisitionTime);
             telemetry.update();
         }

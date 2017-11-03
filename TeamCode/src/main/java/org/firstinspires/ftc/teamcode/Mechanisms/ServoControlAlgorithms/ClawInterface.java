@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 /**
  * Created by Robi on 10/14/2017.
  */
-
+@Deprecated
 public interface ClawInterface {
     void close();
 

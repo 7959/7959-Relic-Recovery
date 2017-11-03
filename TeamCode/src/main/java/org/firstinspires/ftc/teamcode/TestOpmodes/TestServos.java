@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
 /**
  * Created by Robi on 10/18/2017.
  */
-@TeleOp(name = "Debug and test")
+@TeleOp(name = "Servo Test")
 public class TestingAndDebugging extends LinearOpMode {
     final double startR = 0;
     final double startL = 0;

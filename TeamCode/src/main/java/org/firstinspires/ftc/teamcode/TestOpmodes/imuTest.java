@@ -13,8 +13,8 @@ import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 /**
  * Created by Robi on 9/13/2017.
  */
-@TeleOp(name = "Test")
-public class TestDrive extends LinearOpMode{
+@TeleOp(name = "imuTest")
+public class imuTest extends LinearOpMode{
     DcMotor driveWheels[][] = new DcMotor[2][2];
     Acceleration acel;
     Velocity vel;
