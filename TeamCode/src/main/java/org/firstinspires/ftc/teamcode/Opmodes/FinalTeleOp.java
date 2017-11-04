@@ -17,6 +17,7 @@ public class FinalTeleOp extends LinearOpMode {
         RobotMain main = new RobotMain(this,hardwareMap,telemetry);
         imuTeleOpDualGamepad control = new imuTeleOpDualGamepad(main,gamepad1,gamepad2);
         waitForStart();
+        main.JewelArm.setServo(.65);
         while (opModeIsActive()) control.run();
     }
 }

@@ -22,6 +22,7 @@ public class ActualAuton {
         this.main = main;
         this.team = team;
         main.drive = new WheelsImu(main.imu, main.hwMap);
+        this.main.JewelArm.close();
     }
     private class boxFinder extends Thread{
 
@@ -56,7 +57,15 @@ public class ActualAuton {
                 JewelKnock();
                 main.JewelArm.setServo(.65);
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000);
+                main.opMode.sleep(2000+ (moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), .3);
+                main.opMode.sleep(3500);
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
+                main.JewelArm.setServo(0);
+                main.opMode.sleep(500);
+                main.opMode.requestOpModeStop();
+                main.opMode.sleep(30000);
             }
 
 
@@ -64,16 +73,24 @@ public class ActualAuton {
                 JewelKnock();
                 main.JewelArm.setServo(.65);
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000);
+                main.opMode.sleep(2000 +(moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), .3);
+                main.opMode.sleep(3500);
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
+                main.JewelArm.setServo(0);
+                main.opMode.sleep(500);
+                main.opMode.requestOpModeStop();
+                main.opMode.sleep(30000);
             }
 
 
             case REDMIDDLE: {
                 JewelKnock();
-                main.JewelArm.close();
                 main.JewelArm.setServo(.65);
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000);
+                main.opMode.sleep(2000 + (moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
                 //driveOffPlatform(false);
                 //driveuntilLine(.2, 0);
             }
@@ -84,7 +101,8 @@ public class ActualAuton {
                 JewelKnock();
                 main.JewelArm.close();
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000);
+                main.opMode.sleep(2000 + (moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
                 //driveOffPlatform(true);
                 //driveuntilLine(.2,0);
             }
@@ -93,6 +111,27 @@ public class ActualAuton {
 
                 default: main.opMode.requestOpModeStop();
         }
+
+        main.opMode.requestOpModeStop();
+    }
+
+    protected void basicDrivetoZone(boolean isCorner){
+        if(isCorner){
+            main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
+            main.opMode.sleep(2000);
+            main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
+            resetIMU();
+            main.opMode.sleep(500);
+            double timeTillStop = System.currentTimeMillis() + 1000;
+            while(main.opMode.opModeIsActive() && System.currentTimeMillis() < timeTillStop) main.drive.movebyCart(RobotUtilities.toMotorInput(0,0), 180);
+
+        } else {
+            main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
+            main.opMode.sleep(2000);
+            main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
+        }
+        main.JewelArm.setServo(0);
+        main.opMode.sleep(500);
     }
 
     boolean moveWrongway;
@@ -104,12 +143,18 @@ public class ActualAuton {
         main.opMode.sleep(500);
         if(main.JewelSensor.isRed() && isRed){
             main.drive.movebyCart(RobotUtilities.toMotorInput(-.2,0), 0);
+            moveWrongway = true;
         } else if(main.JewelSensor.isRed() && !isRed){
             main.drive.movebyCart(RobotUtilities.toMotorInput(.2,0),0);
+            moveWrongway = false;
         } else if(isRed){
             main.drive.movebyCart(RobotUtilities.toMotorInput(.2,0), 0);
-        } else if(!isRed) main.drive.movebyCart(RobotUtilities.toMotorInput(-.2, 0), 0);
-        main.opMode.sleep(400);
+            moveWrongway = false;
+        } else if(!isRed) {
+            main.drive.movebyCart(RobotUtilities.toMotorInput(-.2, 0), 0);
+            moveWrongway = true;
+        }
+        main.opMode.sleep(750);
         main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
         main.JewelArm.close();
         main.opMode.sleep(500);

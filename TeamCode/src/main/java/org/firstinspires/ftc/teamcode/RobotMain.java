@@ -86,8 +86,7 @@ public class RobotMain {
 
         JewelArm = new SingleServoControl(this.hwMap, "Jewel Arm");
         JewelArm.setClosePos(.65);
-        JewelArm.setOpenPos(.1);// could also be .1, test later
-        JewelArm.close();
+        JewelArm.setOpenPos(.1);
 
         relicClaw = new BasicClaw(this.hwMap, "Relic Claw Far", "Relic Claw Near");
         relicClaw.setOpenPos(0,1);
