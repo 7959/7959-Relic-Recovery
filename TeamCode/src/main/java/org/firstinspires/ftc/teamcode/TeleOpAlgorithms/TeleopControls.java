@@ -5,4 +5,5 @@ package org.firstinspires.ftc.teamcode.TeleOpAlgorithms;
  */
 
 public interface TeleopControls {
+    void run();
 }

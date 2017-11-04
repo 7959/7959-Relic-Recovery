@@ -1,6 +1,4 @@
-package org.firstinspires.ftc.teamcode.Mechanisms.Claws;
-
-import com.qualcomm.robotcore.hardware.HardwareMap;
+package org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms;
 
 /**
  * Created by Robi on 10/14/2017.

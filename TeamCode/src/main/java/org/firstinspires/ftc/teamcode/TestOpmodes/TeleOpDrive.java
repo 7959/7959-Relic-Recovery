@@ -1,7 +1,8 @@
-package org.firstinspires.ftc.teamcode.Opmodes;
+package org.firstinspires.ftc.teamcode.TestOpmodes;
 
 import android.graphics.drawable.VectorDrawable;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
 /**
  * Created by Robi on 10/13/2017.
  */
+@Disabled
 @TeleOp(name = "imuDrive")
 public class TeleOpDrive extends LinearOpMode {
     final double turnsensitivity = Math.PI/32;

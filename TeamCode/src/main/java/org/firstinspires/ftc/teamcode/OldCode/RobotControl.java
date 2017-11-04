@@ -157,7 +157,7 @@ public abstract class RobotControl extends LinearOpMode {
         BNO055IMU imu;
 
         public void init(String name){
-            //Setts parameters for our IMU sensor.(We use Radians and meters per sec per sec)
+            //Setts parameters for our IMU colorSensor.(We use Radians and meters per sec per sec)
             BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
             parameters.angleUnit = BNO055IMU.AngleUnit.RADIANS;
             parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;

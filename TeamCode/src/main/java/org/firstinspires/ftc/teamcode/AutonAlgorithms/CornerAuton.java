@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.ControlAlgorithms;
+package org.firstinspires.ftc.teamcode.AutonAlgorithms;
 
 import org.firstinspires.ftc.teamcode.RobotMain;
 
@@ -12,5 +12,8 @@ public class CornerAuton {
     public CornerAuton(RobotMain main, boolean isRed){
         this.isRed = isRed;
         this.main = main;
+    }
+    public void run(){
+
     }
 }

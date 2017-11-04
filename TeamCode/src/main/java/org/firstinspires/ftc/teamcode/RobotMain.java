@@ -2,10 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcore.external.Func;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
@@ -14,16 +12,21 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.Mechanisms.Claws.SoftwareServoController;
 import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
-import org.firstinspires.ftc.teamcode.Mechanisms.ParrellagramLift;
+import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.BasicClaw;
+import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.SingleServoControl;
+import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.SoftwareServoController;
+import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.BasicArm;
+import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.ParrellagramLift;
 import org.firstinspires.ftc.teamcode.Sensors.ColorDistanceSensor;
+import org.firstinspires.ftc.teamcode.Sensors.DistanceNavigation;
 import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.AutonTeam;
 import org.firstinspires.ftc.teamcode.UtilitiesandMic.PosEstimater;
-import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
 import org.firstinspires.ftc.teamcode.WheelControl.Wheels;
-import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
+
 
 
 /**
@@ -34,68 +37,116 @@ public class RobotMain {
     public final static DistanceUnit distanceUnit = DistanceUnit.METER;
     public final static BNO055IMU.AccelUnit accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
     public final static AngleUnit angleUnit = AngleUnit.RADIANS;
+    public static RelicRecoveryVuMark target;
+    public static AutonTeam team;
+
+
+    public final static double turnsensitivity = Math.PI/64;
+
+
     public InertiaMeasurementUnit imu;
     public static HardwareMap hwMap;
-    Telemetry tele;
+    public static Telemetry tele;
+
+    //initialize drive outside of this class
     public Wheels drive;
     public HorizontalMovement chassisPinion;
     public ParrellagramLift lift;
-    public ColorDistanceSensor jewelArm;
-    public SoftwareServoController Glyphclaw;
+    public ColorDistanceSensor JewelSensor;
+    public SingleServoControl JewelArm;
+    public DistanceNavigation NavSensors;
+    public BasicClaw relicClaw;
+    public BasicArm RelicArm;
 
 
-
-    LinearOpMode opMode;
-    public Thread findPos;
+    public static LinearOpMode opMode;
+    public PosEstimater posEstimater;
 
     public static Orientation ori;
     public static Position pos;
     public static Velocity vel;
     public static Acceleration accel;
 
+
+
+
+    //Constructor for TeleOp
     public RobotMain(LinearOpMode opMode, HardwareMap hwMap, Telemetry tele){
         //May implent starting position later, but for now it all relative
-        ori = new Orientation();
+        //ori = new Orientation();
         //pos = new Position();
-        vel = new Velocity();
-        accel = new Acceleration();
-
-
-
-
+        //vel = new Velocity();
+        //accel = new Acceleration();
 
 
         this.opMode = opMode;
         this.hwMap = hwMap;
         this.tele = tele;
+        RelicArm = new BasicArm(this.hwMap, "Relic Arm");
 
+        JewelArm = new SingleServoControl(this.hwMap, "Jewel Arm");
+        JewelArm.setClosePos(.65);
+        JewelArm.setOpenPos(.1);// could also be .1, test later
+        JewelArm.close();
 
+        relicClaw = new BasicClaw(this.hwMap, "Relic Claw Far", "Relic Claw Near");
+        relicClaw.setOpenPos(0,1);
+        relicClaw.setClosePos(1,0);
 
         imu = new InertiaMeasurementUnit(this.hwMap);
 
-        //jewelArm = new ColorDistanceSensor(this.hwMap, "Color Distance");
-
-        //lift = new ParrellagramLift(this.hwMap);
-
-
-
-        //chassisPinion = new HorizontalMovement(this.hwMap,"Right Pinion","Left Pinion", DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.FORWARD);
-
-        //drive = new WheelsImu(imu, this.hwMap);
-
-        //Glyphclaw = new SoftwareServoController(this.hwMap, "Claw Left", "Claw Right");
-        //Glyphclaw.setOpenpos(0,0);
-        //Glyphclaw.setClosePos(1,1);
+        lift = new ParrellagramLift(this.hwMap);
+        lift.Glyphclaw.setClosePos(1,0);
+        lift.Glyphclaw.setOpenPos(0,1);
 
 
+
+
+        chassisPinion = new HorizontalMovement(this.hwMap,"Right Pinion","Left Pinion", DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.FORWARD);
 
         //findPos = new Thread(new PosEstimater(drive, imu, this.opMode));
 
     }
-    public void run(){
-        imu.startIntegration(0,0,0);
-        findPos.start();
+
+    //Constructor for Autonomous
+    public RobotMain(LinearOpMode opMode, HardwareMap hwMap, Telemetry tele, AutonTeam team){
+        this.team = team;
+        this.opMode = opMode;
+        this.hwMap = hwMap;
+        this.tele = tele;
+
+        JewelArm = new SingleServoControl(this.hwMap, "Jewel Arm");
+        JewelArm.setClosePos(.65);
+        JewelArm.setOpenPos(0);// could also be 1, test later
+        JewelArm.close();
+
+        relicClaw = new BasicClaw(this.hwMap, "Relic Claw Far", "Relic Claw Near");
+        relicClaw.setOpenPos(0,1);
+        relicClaw.setClosePos(1,0);
+
+        imu = new InertiaMeasurementUnit(this.hwMap);
+
+        JewelSensor = new ColorDistanceSensor(this.hwMap, "Color Distance");
+
+        lift = new ParrellagramLift(this.hwMap);
+        lift.Glyphclaw.setClosePos(1,0);
+        lift.Glyphclaw.setOpenPos(0,1);
+
+        NavSensors = new DistanceNavigation(this.hwMap, "Line Sensor", "Wall Sensor");
+
+
+
+        chassisPinion = new HorizontalMovement(this.hwMap,"Right Pinion","Left Pinion", DcMotorSimple.Direction.FORWARD, DcMotorSimple.Direction.FORWARD);
     }
+
+
+
+
+    public void run(){
+        imu. startIntegration(0,0,0);
+        posEstimater.start();
+    }
+
 
 
     public void SetTele(){

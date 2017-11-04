@@ -12,12 +12,17 @@ import org.firstinspires.ftc.teamcode.Sensors.ColorDistanceSensor;
 /**
  * Created by Robi on 10/27/2017.
  */
-@Autonomous(name = "Basic Auton")
-public class BasicAutonRed extends LinearOpMode {
+@Autonomous(name = "Basic AutonB")
+public class BasicAutonBlue extends LinearOpMode {
     protected final DcMotor.Direction frontLeftDir = DcMotorSimple.Direction.FORWARD;
     protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.FORWARD;
     protected final DcMotor.Direction backLeftDir = DcMotorSimple.Direction.FORWARD;
     protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.FORWARD;
+/*
+    protected final DcMotor.Direction frontLeftDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction backLeftDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.REVERSE;*/
     DcMotor MotorWheels[][] = new DcMotor[2][2];
     @Override
     public void runOpMode() {
@@ -47,24 +52,31 @@ public class BasicAutonRed extends LinearOpMode {
 
         arm.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        /*arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
+        /*RelicArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        RelicArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        RelicArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        RelicArm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
 
         //RobotMain main = new RobotMain(this, hardwareMap, telemetry);
         //BasicTeleOpSingleGamePad control = new BasicTeleOpSingleGamePad(main, gamepad1);
         pinion2.setDirection(DcMotorSimple.Direction.REVERSE);
-        JewelArm.setPosition(.5);
+        JewelArm.scaleRange(0,1);
+        JewelArm.setPosition(.6);
         
         waitForStart();
-        JewelArm.setPosition(1);
+
+
+        JewelArm.setPosition(0);
         sleep(1000);
         if(CDSensor.isRed()){
             drive(1,0,0,.5);
-        } else if(CDSensor.isBlue()){
-            drive(-1,0,0,.5);
-        }
+        } else drive(-1,0,0,.5);
+        sleep(1000);
+        JewelArm.setPosition(.5);
+        drive(0,0,0,0);
+        pinion1.setPower(1);
+        pinion2.setPower(1);
+        sleep(9000);
     }
     
     private void drive(double x, double y, double turn, double powerFactor){

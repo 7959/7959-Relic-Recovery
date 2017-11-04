@@ -36,7 +36,7 @@ public class InertiaMeasurementUnit{
     final DistanceUnit distanceUnit = RobotMain.distanceUnit;
     final AngleUnit angleUnit = RobotMain.angleUnit;
 
-    private TeamIntegrator integrator;
+    private TeamIntegrator integrator = new TeamIntegrator();
     final int positioninterval = 1000;
 
 
@@ -52,9 +52,11 @@ public class InertiaMeasurementUnit{
 
 
     protected void setParameters(String name){
+
         BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
-        BNO055IMU.AngleUnit IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
-        //Setts parameters for our IMU sensor.(We use Radians and meters per sec per sec)
+
+        BNO055IMU.AngleUnit IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
+        //Setts parameters for our IMU colorSensor.(We use Radians and meters per sec per sec)
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = IMUangleUnit;
         parameters.accelUnit = IMUaccelUnit;
@@ -65,7 +67,7 @@ public class InertiaMeasurementUnit{
 
         //Map it on the hardware map
         imu = hw.get(BNO055IMU.class, name);
-        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.RADIANS);
+        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
         //Initialize the parameters
         imu.initialize(parameters);
@@ -73,6 +75,9 @@ public class InertiaMeasurementUnit{
     }
     public void retreiveOriData(){
         RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
+    }
+    public void reset(){
+
     }
     public void retreiveAcelData() {
         RobotMain.accel = imu.getLinearAcceleration();
@@ -85,7 +90,7 @@ public class InertiaMeasurementUnit{
     }
 
     public void startIntegration(double x, double y, double z){
-        imu.startAccelerationIntegration(new Position(distanceUnit,x,y,z,0), new Velocity(), positioninterval);
+        imu.startAccelerationIntegration(new Position(distanceUnit,x,y,z,0), new Velocity(), 1);
     }
     public double getyAcel(){
         return imu.getAcceleration().yAccel;

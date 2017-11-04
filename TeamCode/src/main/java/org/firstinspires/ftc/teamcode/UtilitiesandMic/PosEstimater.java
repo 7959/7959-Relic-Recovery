@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsEncoded;
  * Created by Robi on 10/16/2017.
  */
 
-public class PosEstimater implements Runnable {
+public class PosEstimater extends Thread {
     Velocity vel;
     Position estimate;
     public Acceleration imuAccel;
@@ -26,14 +26,21 @@ public class PosEstimater implements Runnable {
 
     LinearOpMode opmode;
     InertiaMeasurementUnit imu;
-    private final double imuWeight = 1;
-    private final double encoderWeight = 0;
-    private final double cameraWeight= 0;
+    private double imuWeight = 0;
+    private double encoderWeight = 0;
+    private double cameraWeight= 0;
     public PosEstimater(Wheels wheelsEncoded, InertiaMeasurementUnit imu, LinearOpMode opMode){
         this.imu = imu;
         this.encoders = wheelsEncoded;
         this.opmode = opMode;
     }
+    public void setWeights(double imuWeight, double encoderWeight, double cameraWeight){
+        this.imuWeight = imuWeight;
+        this.encoderWeight = encoderWeight;
+        this.cameraWeight = cameraWeight;
+    }
+
+
     public void run(){
         while(opmode.opModeIsActive()){
             imuPos = imu.getPos();

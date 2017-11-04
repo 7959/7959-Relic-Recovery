@@ -43,6 +43,9 @@ public final class RobotUtilities {
 
         return cart;
     }
+    public static double[] toMotorInput(double... x){
+        return x;
+    }
     public static double fixdegrees(double angle){
         while(angle > 180){
             angle = angle - 180;

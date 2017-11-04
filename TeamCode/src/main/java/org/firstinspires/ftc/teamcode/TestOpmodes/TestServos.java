@@ -1,22 +1,21 @@
-package org.firstinspires.ftc.teamcode.Opmodes;
+package org.firstinspires.ftc.teamcode.TestOpmodes;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.teamcode.Mechanisms.Claws.ClawInterface;
-import org.firstinspires.ftc.teamcode.Mechanisms.Claws.DoubServ;
+import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.ClawInterface;
+import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.DoubServ;
 import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
-import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
-import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
 
 /**
  * Created by Robi on 10/18/2017.
  */
+@Disabled
 @TeleOp(name = "Servo Test")
-public class TestingAndDebugging extends LinearOpMode {
+public class TestServos extends LinearOpMode {
     final double startR = 0;
     final double startL = 0;
     final double stopR = 1;

@@ -23,10 +23,10 @@ public class BasicWheels implements Wheels {
     /***
      * Set the directions in this class. Will pass on to subclasses
      */
-    protected final DcMotor.Direction frontLeftDir = DcMotorSimple.Direction.FORWARD;
-    protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.FORWARD;
-    protected final DcMotor.Direction backLeftDir = DcMotorSimple.Direction.FORWARD;
-    protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.FORWARD;
+    protected final DcMotor.Direction frontLeftDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction backLeftDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.REVERSE;
 
 
     /**
@@ -44,8 +44,9 @@ public class BasicWheels implements Wheels {
 
 
     public DcMotor[][] MotorWheels = new DcMotor[2][2];
-    public double powerFactor = 1;
-
+    protected double powerFactor = 1;
+    protected double turnFactor = 1;
+    private HardwareMap hmap;
 
     /**
      * Default Constructor, won't see much use.
@@ -57,14 +58,16 @@ public class BasicWheels implements Wheels {
     /**
      * Constructor sets up the direction, which motors to use, Zero power behavior, and Hardwaremap
     */
-    public BasicWheels(HardwareMap HwMap){
+    public BasicWheels(HardwareMap HwMap) {
+        this.hmap = HwMap;
+        MotorWheels[0][0] = hmap.dcMotor.get("Back Left");
+        MotorWheels[1][0] = hmap.dcMotor.get("Back Right");
+        MotorWheels[0][1] = hmap.dcMotor.get("Front Left");
+        MotorWheels[1][1] = hmap.dcMotor.get("Front Right");
 
         setDirection();
         setZeroPowerBehavior();
-        map(HwMap);
     }
-
-
     /**
      * Sets the DCMotor's Zero Power behavior to brake
      */
@@ -72,23 +75,6 @@ public class BasicWheels implements Wheels {
         for(DcMotor[] m :MotorWheels){
             for(DcMotor w: m){
                 w.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            }
-        }
-    }
-    protected void map(HardwareMap hmap){
-        String x;
-        String y;
-        for(int i = 0;i < 2;i++){
-            for(int j = 0; j < 2 ;j++){
-                if(i == 0) x = left;
-                else if(i == 1) x = right;
-                else x = "it failed";
-
-                if(j == 0) y = back;
-                else if(j == 1) y = front;
-                else y = "it failed";
-
-                MotorWheels[i][j] = hmap.dcMotor.get(x + y);
             }
         }
     }
@@ -144,30 +130,26 @@ public class BasicWheels implements Wheels {
      */
 
     public void movebyCart(double Velvector[], double AngularVelocity){
+        AngularVelocity *= turnFactor;
+        double x = Velvector[0];
+        double y = Velvector[1];
         //double mag = Math.sqrt(vector[0]*vector[0] + vector[1]*vector[1]);
       //  double theta = Math.atan2(vector[1], vector[0]);
 
-        double inputVector[];
-
-        inputVector = RobotUtilities.CarttoPolar(Velvector);
-
-        inputVector[1] += angletranslationR;
-
-        inputVector = RobotUtilities.PolartoCart(inputVector);
-        //inputVector[1] = mag * Math.sin(theta- angletranslationR);
-        //inputVector[0] = mag * Math.cos(theta- angletranslationR);
-        for(int i = 0; i < inputVector.length; i++){
-            inputVector[i]=inputVector[i] * powerFactor;
-        }
-
-        MotorWheels[0][0].setPower(inputVector[0] + AngularVelocity);
-        MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);
-        MotorWheels[1][0].setPower(inputVector[1] + AngularVelocity);
-        MotorWheels[1][0].setPower(-inputVector[1] + AngularVelocity);
+        MotorWheels[0][0].setPower(powerFactor*(-y - x +AngularVelocity));
+        MotorWheels[1][1].setPower(powerFactor*(y + x +AngularVelocity));
+        MotorWheels[0][1].setPower(powerFactor*(-y + x +AngularVelocity));
+        MotorWheels[1][0].setPower(powerFactor*(y - x +AngularVelocity));
     }
 
+    public void overrideDrive(double[] Velvector, double AngularVelocity) {
+        movebyCart(Velvector, AngularVelocity);
+    }
+
+    @Deprecated
     public void movebyPolar(double Velvector[], double AngularVelocity){
         double inputVector[];
+        AngularVelocity *= turnFactor;
         Velvector[1] += angletranslationR;
         inputVector = RobotUtilities.PolartoCart(Velvector);
 
@@ -175,10 +157,10 @@ public class BasicWheels implements Wheels {
         for(int i = 0; i < inputVector.length; i++){
             inputVector[i]*= powerFactor;
         }
-        MotorWheels[0][0].setPower(inputVector[0] + AngularVelocity);
-        MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);
-        MotorWheels[1][0].setPower(inputVector[1] + AngularVelocity);
-        MotorWheels[1][0].setPower(-inputVector[1] + AngularVelocity);
+        MotorWheels[0][0].setPower(-inputVector[0] + AngularVelocity);
+        //MotorWheels[1][1].setPower(-inputVector[0] + AngularVelocity);
+        //MotorWheels[0][1].setPower(-inputVector[1] + AngularVelocity);
+        //MotorWheels[1][0].setPower(inputVector[1] + AngularVelocity);
     }
 
     /**
@@ -188,6 +170,16 @@ public class BasicWheels implements Wheels {
         if((x == 0 || x == 1) && (y == 0 || y == 1)){
             MotorWheels[x][y].setPower(power);
         }
+    }
+
+
+    public void setPowerRatio(double ratio) {
+        powerFactor = ratio;
+    }
+
+
+    public void setTurnRatio(double ratio) {
+        turnFactor = ratio;
     }
 
     /**

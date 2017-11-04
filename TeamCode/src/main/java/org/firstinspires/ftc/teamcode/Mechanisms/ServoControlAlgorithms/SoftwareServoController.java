@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.Mechanisms.Claws;
+package org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 /**
  * Created by Robi on 10/22/2017.
  */
-
+@Deprecated
 public class SoftwareServoController {
 
     public double openPos[];
@@ -16,6 +16,7 @@ public class SoftwareServoController {
     HardwareMap hwMap;
     public SoftwareServoController(HardwareMap hwMap,String... names){
         this.hwMap = hwMap;
+        servo = new Servo[names.length];
         for(int i = 0; i < names.length;i++){
             servo[0] = this.hwMap.servo.get(names[i]);
         }

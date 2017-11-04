@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Mechanisms;
 
 import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -17,6 +18,7 @@ public class HorizontalMovement {
         servo2 = hw.crservo.get(name2);
         servo1.setDirection(dir1);
         servo2.setDirection(dir2);
+        servo2.setDirection(DcMotorSimple.Direction.REVERSE);
     }
     public void setPower(double power){
 

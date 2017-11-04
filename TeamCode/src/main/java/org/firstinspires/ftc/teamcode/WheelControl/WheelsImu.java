@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 
 
 public class WheelsImu extends WheelsEncoded {
-    final double powerAngleRatio = Math.PI/100;
+    //private final double powerAngleRatio = 1/(Math.PI/100);
     InertiaMeasurementUnit imu;
     public WheelsImu(InertiaMeasurementUnit Imu,HardwareMap HwMap){
         super(HwMap);
@@ -20,15 +20,19 @@ public class WheelsImu extends WheelsEncoded {
     @Override
     public void movebyCart(double[] Velvector, double desiredAngle) {
         double anglularVelocity;
-        anglularVelocity = (imu.getHeading() - desiredAngle) * powerAngleRatio;
-
+        anglularVelocity = (imu.getHeading() - desiredAngle);
         super.movebyCart(Velvector, anglularVelocity);
     }
 
     @Override
     public void movebyPolar(double[] Velvector, double desiredAngle) {
         double AngularVelocity;
-        AngularVelocity = (imu.getHeading() - desiredAngle) *powerAngleRatio;
+        AngularVelocity = (imu.getHeading() - desiredAngle) /100;
         super.movebyPolar(Velvector, AngularVelocity);
+    }
+
+    @Override
+    public void overrideDrive(double[] Velvector, double AngularVelocity) {
+        super.movebyCart(Velvector, AngularVelocity);
     }
 }

@@ -1,5 +1,6 @@
-package org.firstinspires.ftc.teamcode.Opmodes;
+package org.firstinspires.ftc.teamcode.TestOpmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -13,6 +14,7 @@ import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
 /**
  * Created by Robi on 9/13/2017.
  */
+@Disabled
 @TeleOp(name = "imuTest")
 public class imuTest extends LinearOpMode{
     DcMotor driveWheels[][] = new DcMotor[2][2];

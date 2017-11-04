@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.ControlAlgorithms;
+package org.firstinspires.ftc.teamcode.AutonAlgorithms;
 
 import org.firstinspires.ftc.teamcode.RobotMain;
 

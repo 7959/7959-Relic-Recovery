@@ -12,9 +12,13 @@ public interface Wheels {
     String back = "Back ";
     String right = "Right";
     String left = "Left";
+    void setPowerRatio(double ratio);
+    void setTurnRatio(double ratio);
 
     void movebyCart(double Velvector[], double AngularVelocity);
+    @Deprecated
     void movebyPolar(double Velvector[], double AngularVelocity);
+    void overrideDrive(double Velvector[], double AngularVelocity);
 
 
 

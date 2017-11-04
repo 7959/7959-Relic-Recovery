@@ -104,18 +104,8 @@
         <item>Channel  9 – 2.452 GHz|9</item>
         <item>Channel 10 – 2.457 GHz|10</item>
         <item>Channel 11 – 2.462 GHz|11</item>
-        <!--
-        <item>5GHz, Channel 36</item>
-        <item>5GHz, Channel 40</item>
-        <item>5GHz, Channel 44</item>
-        <item>5GHz, Channel 48</item>
-        -->
-        <!--
-        <item>5GHz, Channel 149</item>
-        <item>5GHz, Channel 153</item>
-        <item>5GHz, Channel 157</item>
-        <item>5GHz, Channel 161</item>
-        -->
+        
+        
     </string-array>
     <attr format="color" name="backgroundAlmostDark"/>
     <attr format="color" name="backgroundDark"/>
@@ -272,7 +262,7 @@
     <string name="appNameUnknown">Unknown Application</string>
     <string name="appThemeChangeRestartNotifyDS">App color scheme has changed. The driver station will restart.</string>
     <string name="appThemeChangeRestartNotifyRC">App color scheme has changed. The robot controller will restart.</string>
-    <string name="app_name">FTC Robot Controller</string>
+    <string name="app_name">FTC main Controller</string>
     <string name="attached">Attached</string>
     <string name="availableConfigListCaption">Available configurations:</string>
     <string name="availableConfigsInfoMessage">These are the configurations the Hardware Wizard was able to find. You can edit each configuration by clicking the edit button. The \'Activate\' button will set that configuration as the current one, which will be used to start the robot.</string>
@@ -360,7 +350,7 @@
     <string name="configureFromTemplate">Configure from Template</string>
     <string name="configure_activity">Configure Robot</string>
     <string name="configure_menu_item">Configure Robot</string>
-    <string name="configure_robot_menu_item">Configure Robot</string>
+    <string name="configure_robot_menu_item">Configure main</string>
     <string name="configure_settings">Change Channel</string>
     <string name="confirmConfigDeleteMessage">Are you sure you want to delete this configuration?</string>
     <string name="confirmConfigDeleteTitle">Confirm Configuration Delete</string>
@@ -609,7 +599,7 @@
     <string name="readOnlyExplanation">Read-only configurations can be edited, but must be saved under a new name.</string>
     <string name="readXML_text">Select an XML file to instantiate a Robot from that file</string>
     <string name="rescanButton_text">Press the \'Scan\' button to rescan for attached devices</string>
-    <string name="restart_robot_menu_item">Restart Robot</string>
+    <string name="restart_robot_menu_item">Restart main</string>
     <string name="restore_settings">Restore Saved WiFi Settings</string>
     <string name="rev_core_hex_name">REV Robotics Core Hex Motor</string>
     <string name="rev_core_hex_xmltag">RevRoboticsCoreHexMotor</string>
@@ -695,7 +685,7 @@
     <string name="title_activity_wifi_channel_selector">Wifi Channel Selection</string>
     <string name="title_activity_wifi_remembered_groups_editor">Wifi Remembered Groups Editor</string>
     <string name="toastCantCreateRobotConfigFilesDir">Can\'t create the Robot Config Files directory!</string>
-    <string name="toastConfigureRobotBeforeProgrammingMode">You must Configure Robot before starting Programming Mode.</string>
+    <string name="toastConfigureRobotBeforeProgrammingMode">You must Configure main before starting Programming Mode.</string>
     <string name="toastDisconnectedFromWifiDirect">Successfully disconnected from WiFi Direct</string>
     <string name="toastDuplicateName">Found %s</string>
     <string name="toastErrorDisconnectingFromWifiDirect">There was an error disconnecting from WiFi Direct</string>
@@ -706,7 +696,7 @@
     <string name="toastOpModeStuck">OpMode stuck in %s. Restarting robot controller app.</string>
     <string name="toastRebootRC">Rebooting Robot Controller</string>
     <string name="toastRestartRobotComplete">Restart Robot Complete</string>
-    <string name="toastRestartingRobot">Restarting Robot</string>
+    <string name="toastRestartingRobot">Restarting main</string>
     <string name="toastSaved">Saved</string>
     <string name="toastUnableToLaunchZTEWifiChannelEditor">Unable to launch ZTE WifiChannelEditor</string>
     <string name="toastWebViewDownloadFile">Downloading %1$s</string>
@@ -734,11 +724,10 @@
     <string name="writeXML_prompt">Select an XML file to instantiate a Robot from that file</string>
     <string name="writeXML_text">Press this button to write the current configuration to an XML file</string>
     <style name="AppBaseTheme" parent="android:Theme.Light">
-        <!-- Theme customizations available in newer API levels can go in res/values-vXX/styles.xml,
-        while customizations related to backward-compatibility can go here. -->
+        
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:textViewStyle">@style/FtcTextViewStyle</item>

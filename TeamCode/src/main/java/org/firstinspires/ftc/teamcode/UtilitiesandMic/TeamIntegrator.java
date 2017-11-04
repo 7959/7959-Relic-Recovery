@@ -60,14 +60,14 @@ public class TeamIntegrator implements BNO055IMU.AccelerationIntegrator {
         Accel = linearAcceleration;
         if(Accel.acquisitionTime == 0) return;
         double t = Accel.acquisitionTime - prevAcel.acquisitionTime;
-
+        RobotMain.tele.addData("time", t);
         Vel.xVeloc += (Accel.xAccel + prevAcel.xAccel) * .5 * t;
         Vel.yVeloc += (Accel.yAccel + prevAcel.yAccel) * .5 * t;
         Vel.zVeloc += (Accel.zAccel + prevAcel.zAccel) * .5 * t;
 
-        Pos.x += (Vel.xVeloc + Vel.xVeloc) * .5 * t;
-        Pos.y += (Vel.yVeloc + Vel.yVeloc) * .5 * t;
-        Pos.z += (Vel.zVeloc + Vel.zVeloc) * .5 * t;
+        Pos.x += (Vel.xVeloc + prevVel.xVeloc) * .5 * t;
+        Pos.y += (Vel.yVeloc + prevVel.yVeloc) * .5 * t;
+        Pos.z += (Vel.zVeloc + prevVel.zVeloc) * .5 * t;
 
         prevAcel = Accel;
         prevVel = Vel;

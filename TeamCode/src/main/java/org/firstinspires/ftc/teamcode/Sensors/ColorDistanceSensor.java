@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.RobotMain;
 
 /**
@@ -12,8 +11,9 @@ import org.firstinspires.ftc.teamcode.RobotMain;
  */
 
 public class ColorDistanceSensor {
-    final int Threshold = 3;// Test and change later
-    public ColorSensor sensor;
+    final int RThreshold = 25;// Test and change later
+    final int BThreshold = 16;
+    public ColorSensor colorSensor;
     public DistanceSensor OptDistance;
     HardwareMap hmap;
 
@@ -21,22 +21,22 @@ public class ColorDistanceSensor {
 
     /**
      * REMINDER:
-     * Name must match optical distance sensor.
+     * Name must match optical distance colorSensor.
      *
      */
     public ColorDistanceSensor(HardwareMap hwmap, String name){
-        sensor = hwmap.colorSensor.get(name);
+        colorSensor = hwmap.colorSensor.get(name);
         OptDistance = hwmap.get(DistanceSensor.class, name);
     }
 
 
     public boolean isRed(){
-        if(sensor.red() >= Threshold)
+        if(colorSensor.red() > colorSensor.blue())
             return true;
         else return false;
     }
     public boolean isBlue(){
-        if(sensor.blue() >= Threshold)
+        if(colorSensor.blue() >= colorSensor.red())
             return true;
         else return false;
     }
