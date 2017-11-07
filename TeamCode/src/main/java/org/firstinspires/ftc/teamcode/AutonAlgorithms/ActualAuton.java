@@ -24,9 +24,6 @@ public class ActualAuton {
         main.drive = new WheelsImu(main.imu, main.hwMap);
         this.main.JewelArm.close();
     }
-    private class boxFinder extends Thread{
-
-    }
 
     private class debuggingPrinting extends Thread{
         RobotMain main;
@@ -56,14 +53,14 @@ public class ActualAuton {
             case REDCORNER: {
                 JewelKnock();
                 main.JewelArm.setServo(.65);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000+ (moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,.1),0);
+                main.opMode.sleep(2500+ (moveWrongway ? 500 : 0));
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), .3);
+               /* main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), .3);
                 main.opMode.sleep(3500);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
-                main.JewelArm.setServo(0);
-                main.opMode.sleep(500);
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);*/
+                //main.JewelArm.setServo(0);
+               // main.opMode.sleep(500);
                 main.opMode.requestOpModeStop();
                 main.opMode.sleep(30000);
             }
@@ -72,14 +69,10 @@ public class ActualAuton {
             case BLUECORNOR:{
                 JewelKnock();
                 main.JewelArm.setServo(.65);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000 +(moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(-.5,.1),0);
+                main.opMode.sleep(2500 +(moveWrongway ? 500 : 0));
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), .3);
-                main.opMode.sleep(3500);
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
-                main.JewelArm.setServo(0);
-                main.opMode.sleep(500);
+
                 main.opMode.requestOpModeStop();
                 main.opMode.sleep(30000);
             }
@@ -89,10 +82,12 @@ public class ActualAuton {
                 JewelKnock();
                 main.JewelArm.setServo(.65);
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000 + (moveWrongway ? 750 : 0));
+                main.opMode.sleep(1500 + (moveWrongway ? 500 : 0));
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
                 //driveOffPlatform(false);
                 //driveuntilLine(.2, 0);
+                main.opMode.requestOpModeStop();
+                main.opMode.sleep(30000);
             }
 
 
@@ -100,11 +95,13 @@ public class ActualAuton {
             case BLUEMIDDLE: {
                 JewelKnock();
                 main.JewelArm.close();
-                main.drive.overrideDrive(RobotUtilities.toMotorInput(.5,0),0);
-                main.opMode.sleep(2000 + (moveWrongway ? 750 : 0));
+                main.drive.overrideDrive(RobotUtilities.toMotorInput(-.5,-.1),0);
+                main.opMode.sleep(1500 + (moveWrongway ? 500 : 0));
                 main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0),0);
                 //driveOffPlatform(true);
                 //driveuntilLine(.2,0);
+                main.opMode.requestOpModeStop();
+                main.opMode.sleep(30000);
             }
 
 
@@ -154,7 +151,7 @@ public class ActualAuton {
             main.drive.movebyCart(RobotUtilities.toMotorInput(-.2, 0), 0);
             moveWrongway = true;
         }
-        main.opMode.sleep(750);
+        main.opMode.sleep(350);
         main.drive.overrideDrive(RobotUtilities.toMotorInput(0,0), 0);
         main.JewelArm.close();
         main.opMode.sleep(500);

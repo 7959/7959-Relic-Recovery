@@ -50,6 +50,7 @@ public class FindMark extends Thread {
         }
         main.target = vuMark();
         relicTrackables.deactivate();
+        camera = null;
     }
 
 }

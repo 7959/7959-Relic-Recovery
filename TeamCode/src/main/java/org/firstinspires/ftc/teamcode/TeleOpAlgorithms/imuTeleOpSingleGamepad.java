@@ -32,22 +32,27 @@ public class imuTeleOpSingleGamepad extends BasicTeleOpSingleGamePad {
     protected void drive(Gamepad controller) {
 
 
+        //Allows the driver to save angles to return to later
         if(controller.dpad_right && controller.left_bumper) savedAngles[0] = main.imu.getHeading();
         if(controller.dpad_up && controller.left_bumper) savedAngles[1] = main.imu.getHeading();
         if(controller.dpad_left && controller.left_bumper) savedAngles[2] = main.imu.getHeading();
         if(controller.dpad_up && controller.left_bumper) savedAngles[3] = main.imu.getHeading();
 
 
+        //Allows the driver to push motors to their maximum speed
         if(controller.right_bumper) mode = driveMode.FAST;
         else{
             if(isSlow) mode = SLOW;
             else mode = driveMode.NORMAL;
         }
+
+        //Toggleable button that changes drive mode between slow and normal
         if(controller.start && !isPressed){
             isSlow = !isSlow;
             isPressed = true;
         } else if(!controller.start && isPressed) isPressed = false;
 
+        //Applies the current modes power changes
         double input[] = {controller.left_stick_x, controller.left_stick_y};
         switch (mode){
             case SLOW:{
@@ -67,10 +72,13 @@ public class imuTeleOpSingleGamepad extends BasicTeleOpSingleGamePad {
             }
         }
 
+        //Makes the robot return to saved angles
         if(controller.a && controller.dpad_right) main.drive.movebyCart(input, savedAngles[0]);
         else if (controller.a && controller.dpad_up) main.drive.movebyCart(input, savedAngles[1]);
         else if (controller.a && controller.dpad_left) main.drive.movebyCart(input, savedAngles[2]);
         else if (controller.a && controller.dpad_down) main.drive.movebyCart(input, savedAngles[3]);
+
+        //Normal driving when robot is not trying to return to saved angles
         else main.drive.overrideDrive(input, controller.right_stick_x * turnIncrease);
         //desiredAngle += controller.right_stick_x * main.turnsensitivity;
     }

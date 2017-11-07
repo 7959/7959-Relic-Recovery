@@ -17,11 +17,14 @@ public class WheelsImu extends WheelsEncoded {
         imu = Imu;
     }
 
+
+    //Calculates required magnitude of angular velocity based off of the imu.
+    //It then inputs the power to turn to the desired angle
     @Override
     public void movebyCart(double[] Velvector, double desiredAngle) {
-        double anglularVelocity;
-        anglularVelocity = (imu.getHeading() - desiredAngle);
-        super.movebyCart(Velvector, anglularVelocity);
+        double angularVelocity;
+        angularVelocity = (imu.getHeading() - desiredAngle);
+        super.movebyCart(Velvector, angularVelocity);
     }
 
     @Override
@@ -31,6 +34,7 @@ public class WheelsImu extends WheelsEncoded {
         super.movebyPolar(Velvector, AngularVelocity);
     }
 
+    //If override is required, this methods runs the BasicWheel movebyCart Method.
     @Override
     public void overrideDrive(double[] Velvector, double AngularVelocity) {
         super.movebyCart(Velvector, AngularVelocity);

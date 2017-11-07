@@ -1,11 +1,57 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic;
 
+import org.firstinspires.ftc.teamcode.RobotMain;
+
+import static com.qualcomm.hardware.bosch.BNO055IMU.AngleUnit.DEGREES;
+
 /**
  * Created by Robi on 11/1/2017.
  */
 
 public enum AutonTeam {
+
+
+
     REDCORNER, BLUECORNOR, REDMIDDLE, BLUEMIDDLE;
+
+
+    //Adjusts motor input  for different team orientations
+    public double[] wheelInput(double x, double y){
+        double power[] = new double[2];
+        switch (this){
+            case REDCORNER: power[0] = x;
+            case BLUECORNOR: power[0] = x * -1;
+            case BLUEMIDDLE: power[0] = x * -1;
+            case REDMIDDLE: power[0] = x;
+        }
+        power[1] = y;
+        return power;
+    }
+
+
+
+    //The angle relative for the Glyph Boxes
+    public double boxAngle(){
+        switch (this){
+            case BLUEMIDDLE: switch (RobotMain.angleUnit){
+                case DEGREES: return 180;
+                case RADIANS: return Math.PI;
+            }
+            case REDMIDDLE: switch (RobotMain.angleUnit){
+                case DEGREES: return 180;
+                case RADIANS: return 180;
+            }
+            case BLUECORNOR: switch (RobotMain.angleUnit){
+                case DEGREES: return 90;
+                case RADIANS: return Math.PI/ 2;
+            }
+            case REDCORNER: switch (RobotMain.angleUnit){
+                case DEGREES: return -90;
+                case RADIANS: return -Math.PI /2;
+            }
+            default: return 0;
+        }
+    }
 
 
     @Override
@@ -18,6 +64,5 @@ public enum AutonTeam {
             default: return "Team Not Chosen";
         }
     }
-
 
 }

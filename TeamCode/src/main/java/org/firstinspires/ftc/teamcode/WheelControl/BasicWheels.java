@@ -142,6 +142,9 @@ public class BasicWheels implements Wheels {
         MotorWheels[1][0].setPower(powerFactor*(y - x +AngularVelocity));
     }
 
+
+
+    //There is no need for an overrideDrive in this class, so it runs the movebyCart method
     public void overrideDrive(double[] Velvector, double AngularVelocity) {
         movebyCart(Velvector, AngularVelocity);
     }

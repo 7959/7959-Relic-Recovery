@@ -8,6 +8,9 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsEncoded;
 
 /**
  * Created by Robi on 10/24/2017.
+ *
+ * The superclass for TeleOp Controls
+ *
  */
 
 public class BasicTeleOpSingleGamePad implements TeleopControls{
@@ -112,6 +115,8 @@ public class BasicTeleOpSingleGamePad implements TeleopControls{
             main.lift.closeClaw();
         } else if(controller.left_trigger > .2){
             main.lift.openClaw();
+        } else if(controller.right_bumper){
+            main.lift.slightClose();
         }
     }
 

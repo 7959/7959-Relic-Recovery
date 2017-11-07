@@ -8,11 +8,15 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  * Created by Robi on 10/14/2017.
+ *
+ * Basic Program to control the rack and pinions on the chassis
  */
 
 public class HorizontalMovement {
     CRServo servo1;
     CRServo servo2;
+
+    //Constructor intialized servos with the hardwaremap and names
     public HorizontalMovement(HardwareMap hw, String name1, String name2, DcMotor.Direction dir1, DcMotor.Direction dir2){
         servo1 = hw.crservo.get(name1);
         servo2 = hw.crservo.get(name2);
@@ -20,6 +24,8 @@ public class HorizontalMovement {
         servo2.setDirection(dir2);
         servo2.setDirection(DcMotorSimple.Direction.REVERSE);
     }
+
+    //sets powers
     public void setPower(double power){
 
         //** 1 may be negative

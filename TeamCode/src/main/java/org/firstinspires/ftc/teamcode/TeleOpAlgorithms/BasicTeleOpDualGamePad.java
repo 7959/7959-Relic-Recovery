@@ -10,20 +10,25 @@ import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
  */
 
 public class BasicTeleOpDualGamePad extends BasicTeleOpSingleGamePad {
+
+
     protected Gamepad gamepad2;
 
 
+    //Default Constuctor
     public BasicTeleOpDualGamePad(){
 
     }
 
+    //Constructor mostly same as the super class except it uses two gamepads
     public BasicTeleOpDualGamePad(RobotMain main, Gamepad gamepad1, Gamepad gamepad2){
         this.main = main;
         this.gamepad1 = gamepad1;
         this.gamepad2 = gamepad2;
-        //this.main.drive = new BasicWheels(main.hwMap);
+        this.main.drive = new BasicWheels(main.hwMap);
     }
 
+    //Overridden Method gives controls to both drivers
     @Override
     public void run() {
         drive(gamepad1);

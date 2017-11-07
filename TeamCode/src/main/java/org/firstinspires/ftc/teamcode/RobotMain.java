@@ -17,7 +17,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
 import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.BasicClaw;
 import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.SingleServoControl;
-import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.SoftwareServoController;
 import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.BasicArm;
 import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.ParrellagramLift;
 import org.firstinspires.ftc.teamcode.Sensors.ColorDistanceSensor;
@@ -31,6 +30,10 @@ import org.firstinspires.ftc.teamcode.WheelControl.Wheels;
 
 /**
  * Created by Robi on 10/20/2017.
+ *
+ * The Main class of the Robot.
+ * All sensors, motors, and servos have connections to this class.
+ * There are many static objects and variables so unit can easily be changed or to fix constants
  */
 
 public class RobotMain {

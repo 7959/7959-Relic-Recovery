@@ -6,8 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.ClawInterface;
-import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.DoubServ;
+import org.firstinspires.ftc.teamcode.OldCode.ClawInterface;
+import org.firstinspires.ftc.teamcode.OldCode.DoubServ;
 import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
 
 /**

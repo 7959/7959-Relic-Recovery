@@ -53,9 +53,14 @@ public class InertiaMeasurementUnit{
 
     protected void setParameters(String name){
 
-        BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
 
-        BNO055IMU.AngleUnit IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
+        BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        BNO055IMU.AngleUnit IMUangleUnit;
+        switch (RobotMain.angleUnit){
+            case DEGREES: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
+            case RADIANS: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
+                default: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
+        }
         //Setts parameters for our IMU colorSensor.(We use Radians and meters per sec per sec)
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
         parameters.angleUnit = IMUangleUnit;

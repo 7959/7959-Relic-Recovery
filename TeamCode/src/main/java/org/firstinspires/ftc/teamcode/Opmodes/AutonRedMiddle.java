@@ -9,11 +9,14 @@ import org.firstinspires.ftc.teamcode.UtilitiesandMic.AutonTeam;
 
 /**
  * Created by Robi on 11/3/2017.
+ * Autonomous Program for Red Middle.
+ * Autonomous Subclasses for LinearOpMode in this program are only used to call from the
+ * AutonAlgorithms Package.
  */
 @Autonomous(name = "RedMiddle")
 public class AutonRedMiddle extends LinearOpMode {
     @Override
-    public void runOpMode() throws InterruptedException {
+    public void runOpMode() {
         RobotMain main = new RobotMain(this, hardwareMap, telemetry, AutonTeam.REDMIDDLE);
         ActualAuton auton = new ActualAuton(main, AutonTeam.REDMIDDLE);
         waitForStart();
