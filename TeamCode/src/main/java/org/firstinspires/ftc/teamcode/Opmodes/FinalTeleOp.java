@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode.Opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.ParrellagramLift;
 import org.firstinspires.ftc.teamcode.RobotMain;
 import org.firstinspires.ftc.teamcode.TeleOpAlgorithms.imuTeleOpDualGamepad;
 
@@ -28,7 +27,7 @@ public class FinalTeleOp extends LinearOpMode {
         waitForStart();
 
         //Pull the tail back from autonomous
-        main.JewelArm.setServo(.65);
+       // main.JewelArm.setServo(.65);
 
         //Continually run the control program in the algorithm
         while (opModeIsActive()) control.run();

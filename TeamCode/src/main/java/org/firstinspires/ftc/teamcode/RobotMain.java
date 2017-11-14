@@ -14,7 +14,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
 import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.BasicClaw;
 import org.firstinspires.ftc.teamcode.Mechanisms.ServoControlAlgorithms.SingleServoControl;
 import org.firstinspires.ftc.teamcode.Mechanisms.VerticalMovement.BasicArm;
@@ -148,8 +147,6 @@ public class RobotMain {
         imu. startIntegration(0,0,0);
         posEstimater.start();
     }
-
-
 
     public void SetTele(){
         tele.addLine()

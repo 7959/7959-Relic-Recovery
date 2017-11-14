@@ -20,7 +20,7 @@ public abstract class AutonomousAlgorithm {
 
     protected Boolean wentTowardBox;
     protected void jewelKnock(){
-        main.JewelArm.open();
+     /*   main.JewelArm.open();
         boolean isRed;
         switch (team){
             case REDCORNER: isRed = true;
@@ -77,7 +77,7 @@ public abstract class AutonomousAlgorithm {
         }
 
         main.drive.overrideDrive(team.wheelInput(0,0),0);
-
+*/
     }
 
 

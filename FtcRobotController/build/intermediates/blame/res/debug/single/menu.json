@@ -1,11 +1,23 @@
 [
     {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\ftc_robot_controller.xml",
+        "source": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\menu\\ftc_robot_controller.xml"
+    },
+    {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\menu_server.xml",
         "source": "C:\\Users\\Robi\\.android\\build-cache\\b0e0871b3538e181db33a2eac37cc797393880bd\\output\\res\\menu\\menu_server.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\ftc_robot_controller.xml",
         "source": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\src\\main\\res\\menu\\ftc_robot_controller.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\menu_server.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\233e1cd94e86e42ea79dbd763ddcaf7c358f1f0c\\output\\res\\menu\\menu_server.xml"
+    },
+    {
+        "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\main_menu.xml",
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\4e4a64ffcd5701f594167a385afdcba2d785725b\\output\\res\\menu\\main_menu.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\res\\merged\\debug\\menu\\main_menu.xml",

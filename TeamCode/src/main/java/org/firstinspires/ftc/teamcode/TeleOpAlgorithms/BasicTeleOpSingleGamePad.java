@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsEncoded;
  *
  */
 
-public class BasicTeleOpSingleGamePad implements TeleopControls{
+public class BasicTeleOpSingleGamePad{
     protected RobotMain main;
     protected Gamepad gamepad1;
 

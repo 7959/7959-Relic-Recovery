@@ -8,7 +8,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 import org.firstinspires.ftc.teamcode.OldCode.ClawInterface;
 import org.firstinspires.ftc.teamcode.OldCode.DoubServ;
-import org.firstinspires.ftc.teamcode.Mechanisms.HorizontalMovement;
 
 /**
  * Created by Robi on 10/18/2017.

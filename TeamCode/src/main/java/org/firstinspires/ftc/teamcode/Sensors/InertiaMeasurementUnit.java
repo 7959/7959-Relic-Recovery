@@ -12,6 +12,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
+import org.firstinspires.ftc.teamcode.RobotControl;
 import org.firstinspires.ftc.teamcode.RobotMain;
 import org.firstinspires.ftc.teamcode.UtilitiesandMic.TeamIntegrator;
 
@@ -30,21 +31,21 @@ public class InertiaMeasurementUnit{
     HardwareMap hw;
     public BNO055IMU imu;
     
-    public Acceleration acel;
+    public Orientation ori;
+    public Acceleration accel;
     public Position pos;
     public Velocity vel;
-    final DistanceUnit distanceUnit = RobotMain.distanceUnit;
-    final AngleUnit angleUnit = RobotMain.angleUnit;
+    final DistanceUnit distanceUnit = RobotControl.distanceUnit;
+    final AngleUnit angleUnit = RobotControl.angleUnit;
 
     private TeamIntegrator integrator = new TeamIntegrator();
-    final int positioninterval = 1000;
 
 
 
     public InertiaMeasurementUnit(HardwareMap hmap){
         hw = hmap;
         vel = new Velocity();
-        acel = new Acceleration();
+        accel = new Acceleration();
         pos = new Position();
         setParameters("imu");
 
@@ -56,10 +57,10 @@ public class InertiaMeasurementUnit{
 
         BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         BNO055IMU.AngleUnit IMUangleUnit;
-        switch (RobotMain.angleUnit){
+        switch (RobotControl.angleUnit){
             case DEGREES: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
             case RADIANS: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
-                default: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
+                default: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
         }
         //Setts parameters for our IMU colorSensor.(We use Radians and meters per sec per sec)
         BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
@@ -72,37 +73,37 @@ public class InertiaMeasurementUnit{
 
         //Map it on the hardware map
         imu = hw.get(BNO055IMU.class, name);
-        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
 
         //Initialize the parameters
         imu.initialize(parameters);
 
     }
     public void retreiveOriData(){
-        RobotMain.ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
+        ori = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, angleUnit);
     }
     public void reset(){
 
     }
-    public void retreiveAcelData() {
-        RobotMain.accel = imu.getLinearAcceleration();
+    public void retreiveaccelData() {
+        accel = imu.getLinearAcceleration();
     }
     public void retreivePosData(){
-        RobotMain.pos = imu.getPosition();
+        pos = imu.getPosition();
     }
     public void retreiveVelData(){
-        RobotMain.vel = imu.getVelocity();
+        vel = imu.getVelocity();
     }
 
     public void startIntegration(double x, double y, double z){
         imu.startAccelerationIntegration(new Position(distanceUnit,x,y,z,0), new Velocity(), 1);
     }
-    public double getyAcel(){
+    public double getyaccel(){
         return imu.getAcceleration().yAccel;
     }
     public Acceleration getaccel(){
-        retreiveAcelData();
-        return acel;
+        retreiveaccelData();
+        return accel;
     }
     public Velocity getVel(){
         retreiveVelData();
@@ -120,14 +121,14 @@ public class InertiaMeasurementUnit{
     // May change to Orintation class later
     public float getHeading() {
         retreiveOriData();
-        return RobotMain.ori.firstAngle;
+        return ori.firstAngle;
     }
     public float getRoll(){
         retreiveOriData();
-        return RobotMain.ori.secondAngle;
+        return ori.secondAngle;
     }
     public float getPitch(){
         retreiveOriData();
-        return RobotMain.ori.thirdAngle;
+        return ori.thirdAngle;
     }
 }
