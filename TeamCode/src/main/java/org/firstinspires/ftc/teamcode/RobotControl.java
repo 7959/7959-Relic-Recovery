@@ -19,7 +19,7 @@ public class RobotControl {
 
 
     public InertiaMeasurementUnit imu;
-    public LinearOpMode opMode;
+    public static LinearOpMode opMode;
     public IMUDrive drive;
 
     public RobotControl(LinearOpMode opMode){

@@ -28,15 +28,19 @@ public class Colors extends LinearOpMode {
         final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
         waitForStart();
         while(opModeIsActive()){
+
         Color.RGBToHSV((int) (Math.random()*5*255),
                 (int) (Math.random()*5*255),
                 (int) ((Math.random()*5* 255)),
                 COLOOOOORS);
+
+
         relativeLayout.post(new Runnable() {
             public void run() {
                 relativeLayout.setBackgroundColor(Color.HSVToColor(0xff, COLOOOOORStoreference));
             }
         });
+
             x = scale(x);
             y = scale(y);
             z = scale(z);
@@ -49,7 +53,6 @@ public class Colors extends LinearOpMode {
                 relativeLayout.setBackgroundColor(Color.TRANSPARENT);
             }
         });
-        Animatable j;
 
 
     }
