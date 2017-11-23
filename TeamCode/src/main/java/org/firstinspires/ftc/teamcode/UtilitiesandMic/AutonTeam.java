@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic;
 
-import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.RobotControl;
 
 import static com.qualcomm.hardware.bosch.BNO055IMU.AngleUnit.DEGREES;
 
@@ -33,19 +33,19 @@ public enum AutonTeam {
     //The angle relative for the Glyph Boxes
     public double boxAngle(){
         switch (this){
-            case BLUEMIDDLE: switch (RobotMain.angleUnit){
+            case BLUEMIDDLE: switch (RobotControl.angleUnit){
                 case DEGREES: return 180;
                 case RADIANS: return Math.PI;
             }
-            case REDMIDDLE: switch (RobotMain.angleUnit){
+            case REDMIDDLE: switch (RobotControl.angleUnit){
                 case DEGREES: return 180;
                 case RADIANS: return 180;
             }
-            case BLUECORNOR: switch (RobotMain.angleUnit){
+            case BLUECORNOR: switch (RobotControl.angleUnit){
                 case DEGREES: return 90;
                 case RADIANS: return Math.PI/ 2;
             }
-            case REDCORNER: switch (RobotMain.angleUnit){
+            case REDCORNER: switch (RobotControl.angleUnit){
                 case DEGREES: return -90;
                 case RADIANS: return -Math.PI /2;
             }

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.teamcode.RobotControl;
 import org.firstinspires.ftc.teamcode.RobotMain;
 
 /**
@@ -11,11 +12,8 @@ import org.firstinspires.ftc.teamcode.RobotMain;
  */
 
 public class ColorDistanceSensor {
-    final int RThreshold = 25;// Test and change later
-    final int BThreshold = 16;
     public ColorSensor colorSensor;
     public DistanceSensor OptDistance;
-    HardwareMap hmap;
 
 
 
@@ -42,7 +40,7 @@ public class ColorDistanceSensor {
     }
 
     public double getDistance(){
-        return OptDistance.getDistance(RobotMain.distanceUnit);
+        return OptDistance.getDistance(RobotControl.distanceUnit);
     }
 
 }
