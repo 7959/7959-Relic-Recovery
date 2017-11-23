@@ -12,9 +12,9 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsEncoded;
  * The superclass for TeleOp Controls
  *
  */
-
+@Deprecated
 public class BasicTeleOpSingleGamePad{
-    protected RobotMain main;
+   /* protected RobotMain main;
     protected Gamepad gamepad1;
 
     protected enum driveMode{
@@ -118,6 +118,6 @@ public class BasicTeleOpSingleGamePad{
         } else if(controller.right_bumper){
             main.lift.slightClose();
         }
-    }
+    }*/
 
 }

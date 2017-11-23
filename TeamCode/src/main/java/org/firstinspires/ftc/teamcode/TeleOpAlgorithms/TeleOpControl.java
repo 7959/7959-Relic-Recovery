@@ -23,13 +23,17 @@ public class TeleOpControl {
     }
 
     public void run() {
+        while (RobotControl.opMode.opModeIsActive()){
+            drive(gamepad1);
+        }
 
     }
     //Index of which angle to use. If equal to -1, robot will not chase an angle.
     private byte targetAngle = -1;
 
 
-    private double[] savedAngles = new double[2];
+    private double[] savedAngles = new double[3];
+    private boolean isHoldingCurrentAngle = false;
 
 
     private void drive(Gamepad gamepad){

@@ -24,7 +24,6 @@ public class RelicArm {
     }
     public void setPulleyMotorPower(double power){
         pulleyMotor.setPower(power);
-
     }
 
 }

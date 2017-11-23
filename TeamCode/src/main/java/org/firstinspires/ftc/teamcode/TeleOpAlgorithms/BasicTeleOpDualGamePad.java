@@ -8,10 +8,10 @@ import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
 /**
  * Created by Robi on 10/25/2017.
  */
-
+@Deprecated
 public class BasicTeleOpDualGamePad extends BasicTeleOpSingleGamePad {
 
-
+/*
     protected Gamepad gamepad2;
 
 
@@ -37,6 +37,6 @@ public class BasicTeleOpDualGamePad extends BasicTeleOpSingleGamePad {
         relicArmControl(gamepad2);
         relicClawControl(gamepad2);
         main.tele.addData("Drive Mode", mode);
-    }
+    }*/
 
 }

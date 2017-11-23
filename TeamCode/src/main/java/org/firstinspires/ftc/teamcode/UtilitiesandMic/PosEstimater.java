@@ -48,7 +48,6 @@ public class PosEstimater extends Thread {
             estimate.y +=imuPos.y * imuWeight;
             estimate.z +=imuPos.z * imuWeight;
             //Add other sections later
-            RobotMain.pos = estimate;
         }
     }
 }

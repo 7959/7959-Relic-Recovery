@@ -49,7 +49,24 @@ public enum AutonTeam {
                 case DEGREES: return -90;
                 case RADIANS: return -Math.PI /2;
             }
+
+
             default: return 0;
+        }
+    }
+
+    public boolean isRed(){
+        switch (this){
+            case REDCORNER:
+            case REDMIDDLE:{
+                return true;
+            }
+
+            case BLUECORNOR:
+            case BLUEMIDDLE:{
+                return false;
+            }
+            default: return false;
         }
     }
 

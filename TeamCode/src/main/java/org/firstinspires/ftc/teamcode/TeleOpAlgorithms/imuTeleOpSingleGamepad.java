@@ -6,15 +6,14 @@ import org.firstinspires.ftc.teamcode.RobotMain;
 import org.firstinspires.ftc.teamcode.WheelControl.BasicWheels;
 import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
 
-import static org.firstinspires.ftc.teamcode.TeleOpAlgorithms.BasicTeleOpSingleGamePad.driveMode.SLOW;
 
 /**
  * Created by Robi on 10/25/2017.
  */
-
+@Deprecated
 public class imuTeleOpSingleGamepad extends BasicTeleOpSingleGamePad {
 
-
+/*
     public imuTeleOpSingleGamepad(){
 
     }
@@ -82,5 +81,5 @@ public class imuTeleOpSingleGamepad extends BasicTeleOpSingleGamePad {
         else main.drive.overrideDrive(input, controller.right_stick_x * turnIncrease);
         //desiredAngle += controller.right_stick_x * main.turnsensitivity;
     }
-
+*/
 }

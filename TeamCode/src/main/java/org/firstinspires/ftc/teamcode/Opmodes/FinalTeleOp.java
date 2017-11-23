@@ -3,7 +3,9 @@ package org.firstinspires.ftc.teamcode.Opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.RobotControl;
 import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.TeleOpAlgorithms.TeleOpControl;
 import org.firstinspires.ftc.teamcode.TeleOpAlgorithms.imuTeleOpDualGamepad;
 
 /**
@@ -19,10 +21,11 @@ public class FinalTeleOp extends LinearOpMode {
     @Override
     public void runOpMode() {
         //initialize all the classes
-        RobotMain main = new RobotMain(this,hardwareMap,telemetry);
+        RobotControl robotControl = new RobotControl(this);
 
         //initialize controls
-        imuTeleOpDualGamepad control = new imuTeleOpDualGamepad(main,gamepad1,gamepad2);
+        TeleOpControl inputControl = new TeleOpControl(gamepad1,gamepad2,robotControl);
+
 
         waitForStart();
 
@@ -30,6 +33,6 @@ public class FinalTeleOp extends LinearOpMode {
        // main.JewelArm.setServo(.65);
 
         //Continually run the control program in the algorithm
-        while (opModeIsActive()) control.run();
+
     }
 }

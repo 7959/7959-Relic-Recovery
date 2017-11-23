@@ -10,9 +10,9 @@ import org.firstinspires.ftc.teamcode.WheelControl.WheelsImu;
  *
  * TeleOp Program mostly the same has its superclass but has two drivers
  */
-
+@Deprecated
 public class imuTeleOpDualGamepad extends imuTeleOpSingleGamepad {
-    Gamepad gamepad2;
+   /* Gamepad gamepad2;
 
     //Constructor mostly same as superclass, but uses two gamepads.
     public imuTeleOpDualGamepad(RobotMain main, Gamepad gamepad1, Gamepad gamepad2) {
@@ -45,5 +45,5 @@ public class imuTeleOpDualGamepad extends imuTeleOpSingleGamepad {
 
 
         main.tele.addData("Drive Mode", mode);
-    }
+    }*/
 }

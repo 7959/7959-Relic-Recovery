@@ -14,14 +14,16 @@ public class ServoSync {
     private double[][] positions;
     public ServoSync(HardwareMap hardwareMap, Servo... servos){
         this.servos = servos;
+        positions = new double[servos.length][];
     }
+
+
     public void savePositions(int ServoIndex, double[] positions){
-        for(int i = 0; i < positions.length;i++){
-            this.positions[ServoIndex][i] = positions[i];
-        }
+        this.positions[ServoIndex] = positions;
     }
 
     public void gotoPos(int index){
+        //Cycles through the servos, setting the positions
         for(int i = 0; i < servos.length;i++){
             servos[i].setPosition(positions[i][index]);
         }
