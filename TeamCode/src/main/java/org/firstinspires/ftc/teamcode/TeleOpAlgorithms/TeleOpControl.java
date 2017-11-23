@@ -31,7 +31,7 @@ public class TeleOpControl {
 
     private double[] savedAngles = new double[2];
 
-    
+
     private void drive(Gamepad gamepad){
         if(gamepad.left_bumper && gamepad.right_trigger > .1) savedAngles[0] = bot.imu.getHeading();
         else if(gamepad.left_bumper && gamepad.left_trigger > .1) savedAngles[1] = bot.imu.getHeading();

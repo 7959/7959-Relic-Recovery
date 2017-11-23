@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.UtilitiesandMic;
+package org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
+import org.firstinspires.ftc.teamcode.RobotControl;
 import org.firstinspires.ftc.teamcode.RobotMain;
 
 /**
@@ -22,7 +23,7 @@ public class TeamIntegrator implements BNO055IMU.AccelerationIntegrator {
     private Position Pos;
 
 
-    private final DistanceUnit distanceUnit = RobotMain.distanceUnit;
+    private final DistanceUnit distanceUnit = RobotControl.distanceUnit;
 
     private Acceleration prevAcel;
     private Velocity prevVel;
@@ -60,7 +61,7 @@ public class TeamIntegrator implements BNO055IMU.AccelerationIntegrator {
         Accel = linearAcceleration;
         if(Accel.acquisitionTime == 0) return;
         double t = Accel.acquisitionTime - prevAcel.acquisitionTime;
-        RobotMain.tele.addData("time", t);
+        RobotControl.opMode.telemetry.addData("time", t);
         Vel.xVeloc += (Accel.xAccel + prevAcel.xAccel) * .5 * t;
         Vel.yVeloc += (Accel.yAccel + prevAcel.yAccel) * .5 * t;
         Vel.zVeloc += (Accel.zAccel + prevAcel.zAccel) * .5 * t;

@@ -1,31 +1,43 @@
 package org.firstinspires.ftc.teamcode.TestOpmodes;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cRangeSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff.dervativeFinder;
 
 
 /**
  * Created by Robi on 10/23/2017.
  */
-@Disabled
-@TeleOp(name = "MainTest")
+
+@TeleOp(name = "testDervative")
 public class TestMain extends LinearOpMode {
-    DcMotor MotorWheels[][] = new DcMotor[2][2];
+
+    ModernRoboticsI2cRangeSensor rangeSensor;
     @Override
-    public void runOpMode() throws InterruptedException {
-        MotorWheels[0][0] = hardwareMap.dcMotor.get("Back Left");
-        MotorWheels[1][0] = hardwareMap.dcMotor.get("Back Right");
-        MotorWheels[0][1] = hardwareMap.dcMotor.get("Front Left");
-        MotorWheels[1][1] = hardwareMap.dcMotor.get("Front Right");
+    public void runOpMode() {
+        dervativeFinder finder = new dervativeFinder(new dervativeFinder.dataInput() {
+            @Override
+            public double getData() {
+                return rangeSensor.getDistance(DistanceUnit.CM);
+            }
+
+            @Override
+            public double DeltaT() {
+                try{
+                    Thread.sleep(50);
+                }catch (Exception e){
+
+                }
+                return 50;
+            }
+        });
         waitForStart();
         while(opModeIsActive()){
-
+            telemetry.addData("Estimated range dervative", finder.getDervative());
+            telemetry.update();
         }
     }
 }
