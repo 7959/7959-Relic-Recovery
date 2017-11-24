@@ -17,11 +17,6 @@ public class ColorDistanceSensor {
 
 
 
-    /**
-     * REMINDER:
-     * Name must match optical distance colorSensor.
-     *
-     */
     public ColorDistanceSensor(HardwareMap hwmap, String name){
         colorSensor = hwmap.colorSensor.get(name);
         OptDistance = hwmap.get(DistanceSensor.class, name);

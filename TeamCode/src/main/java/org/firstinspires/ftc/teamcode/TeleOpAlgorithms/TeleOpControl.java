@@ -32,20 +32,36 @@ public class TeleOpControl {
     private byte targetAngle = -1;
 
 
+
+
     private double[] savedAngles = new double[3];
-    private boolean isHoldingCurrentAngle = false;
-
-
+    private boolean isPressed = false;
+    private boolean isSlow = false;
     private void drive(Gamepad gamepad){
+
+        //Saves angles at drivers request, and sets target angle at drivers request
         if(gamepad.left_bumper && gamepad.right_trigger > .1) savedAngles[0] = bot.imu.getHeading();
         else if(gamepad.left_bumper && gamepad.left_trigger > .1) savedAngles[1] = bot.imu.getHeading();
         else if(gamepad.right_trigger > .1) targetAngle = 0;
         else if(gamepad.left_trigger > .1) targetAngle = 1;
         else targetAngle = -1;
 
+
+        if(gamepad.right_bumper) driveMode = driveMode.FAST;
+        else{
+            if(isSlow) driveMode = driveMode.SLOW;
+            else driveMode = driveMode.NORMAL;
+        }
+        if(gamepad.start && !isPressed){
+            isSlow = !isSlow;
+            isPressed = true;
+        } else if(!gamepad.start && isPressed) isPressed = false;
+
+
+        //Drive
         if(targetAngle != -1){
             bot.drive.movebyCart((driveMode.powerInput(gamepad.left_stick_x, gamepad.left_stick_y)), savedAngles[targetAngle]);
-        } else bot.drive.basicMove(driveMode.powerInput(gamepad.left_stick_x, gamepad.left_stick_y), gamepad.right_stick_x);
+        } else bot.drive.basicMove(driveMode.powerInput(gamepad.left_stick_x, gamepad.left_stick_y), driveMode.turnInput(gamepad.right_stick_x));
     }
 
 
