@@ -24,22 +24,48 @@ public class GlyphMechanism {
         Claw2[0] = hardwareMap.servo.get("Top Claw Left");
         Claw2[1] = hardwareMap.servo.get("Top Claw Right");
     }
+
+    private boolean isFlipped = false;
+
+
     public void rotate(){
-        if(rotationServo.getPosition() == flippedPos) rotationServo.setPosition(defaultPos);
-        else rotationServo.setPosition(flippedPos);
+        if(isFlipped){
+            rotationServo.setPosition(defaultPos);
+        } else  rotationServo.setPosition(flippedPos);
+
+        isFlipped = !isFlipped;
+
     }
+
+
     public void rotate(double pos){
         rotationServo.setPosition(pos);
     }
+
+
     public void claw1Control(ClawPositions position){
         Claw1[0].setPosition(position.pos);
         Claw1[1].setPosition(1-position.pos);
     }
 
+    public void claw1Control(double position){
+        Claw1[0].setPosition(position);
+        Claw1[1].setPosition(1-position);
+    }
+
+
+
     public void claw2Control(ClawPositions position){
         Claw2[0].setPosition(position.pos);
         Claw2[1].setPosition(1-position.pos);
     }
+
+
+    public void claw2Control(double position){
+        Claw2[0].setPosition(position);
+        Claw2[1].setPosition(1-position);
+    }
+
 
 
     public enum ClawPositions{
