@@ -28,9 +28,7 @@ public class FinalTeleOp extends LinearOpMode {
 
 
         waitForStart();
-
-        //Pull the tail back from autonomous
-       // main.JewelArm.setServo(.65);
+        inputControl.run();
 
         //Continually run the control program in the algorithm
 
