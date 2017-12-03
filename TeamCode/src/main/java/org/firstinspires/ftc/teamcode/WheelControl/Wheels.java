@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.WheelControl;
 /**
  * Created by Robi on 10/12/2017.
  */
-
+@Deprecated
 public interface Wheels {
     double angletranslationR = Math.PI/4;
     double angletranslationD = 45;

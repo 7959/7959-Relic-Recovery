@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 /**
  * Created by Robi on 10/9/2017.
  */
-
+@Deprecated
 public class WheelsEncoded extends BasicWheels {
 
     /**

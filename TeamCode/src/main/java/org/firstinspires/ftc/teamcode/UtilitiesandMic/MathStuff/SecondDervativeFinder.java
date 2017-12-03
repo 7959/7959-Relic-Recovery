@@ -6,16 +6,16 @@ import org.firstinspires.ftc.teamcode.RobotControl;
  * Created by Robi on 11/16/2017.
  */
 
-public abstract class dervativeFinder extends Thread {
+public abstract class SecondDervativeFinder extends Thread {
 
     public interface dataInput{//Maybe switch to float, check how hard on CPU
         double getData();
     }
 
-    
-    
-    
-    public dervativeFinder(int deltaT){
+
+
+
+    public SecondDervativeFinder(int deltaT){
         this.deltaT = deltaT;
     }
     
@@ -24,6 +24,8 @@ public abstract class dervativeFinder extends Thread {
     private double y0;
     private double y1;
     private double y2;
+    private double y3;
+    private double y4;
     private final int deltaT;
 
     public void init(){
@@ -45,13 +47,24 @@ public abstract class dervativeFinder extends Thread {
         } catch (Exception e){
 
         }
+        y3 = getData();
+        try {
+            Thread.sleep(deltaT);
+        } catch (Exception e){
+        }
+        y4 = getData();
+        try {
+            Thread.sleep(deltaT);
+        } catch (Exception e){
+
+        }
     }
     public void run(){
 
 
         //Uses the second difference formula to estimate the derivative at x1,y1
         while(RobotControl.opMode.opModeIsActive()){
-            dervative = (y0 - y2)/(2 * deltaT);
+            dervative = (y1 - 2 * y2 + y0)/(deltaT * deltaT);
             try {
                 Thread.sleep(deltaT);
             } catch (Exception e){

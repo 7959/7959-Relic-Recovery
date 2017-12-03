@@ -14,8 +14,11 @@ public abstract class AutonomousAlgorithm {
     final AutonTeam team;
 
     public AutonomousAlgorithm(RobotControl bot, AutonTeam team) {
+
         this.bot = bot;
         this.team = team;
+
+
     }
 
     public abstract void run();
@@ -24,6 +27,12 @@ public abstract class AutonomousAlgorithm {
         if(team.isRed()){
 
         }
+    }
+
+    protected void driveToBox(){
+
+    }
+    protected void placeCube(){
 
     }
 }

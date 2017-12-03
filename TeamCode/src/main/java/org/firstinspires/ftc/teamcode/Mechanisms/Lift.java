@@ -15,8 +15,10 @@ public class Lift {
     private RobotControl bot;
 
     private double counterTorque = 0;
+    private double powerPerCount = 720 * .001;//power multiply by the difference of encoder count and
 
     private double desiredAngle = 0;//Angle Relative to start
+    private final int maxEncoderPower = 300;//360 counts at 90 degrees relative to straight down to zero. it is just a guess today.
 
     public Lift(RobotControl bot){
         this.bot = bot;
@@ -29,13 +31,24 @@ public class Lift {
 
         motorR.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorL.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
     }
-
-
 
     public void holdPos(){
-        motorR.setPower(.2);//Base off encoder counts later
-        motorL.setPower(.2);//test and change later
+        setPower(.2);//Base off encoder counts later test and change later
     }
+    public void setPower(double power){
+        motorL.setPower(power);
+        motorR.setPower(power);
+    }
+
+    public void holdPosbyPos(){
+        double power;
+
+        power = Math.abs(maxEncoderPower - motorR.getCurrentPosition() * powerPerCount);
+
+        setPower(power);
+    }
+
 
 }
