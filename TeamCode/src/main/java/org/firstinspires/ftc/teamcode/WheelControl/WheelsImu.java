@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
  * Created by Robi on 10/12/2017.
  */
 
-
+@Deprecated
 public class WheelsImu extends WheelsEncoded {
     //private final double powerAngleRatio = 1/(Math.PI/100);
     InertiaMeasurementUnit imu;

@@ -11,6 +11,7 @@ import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 /**
  * Created by Robi on 10/9/2017.
  */
+@Deprecated
 public class BasicWheels implements Wheels {
     /**
      * This class is the most basic function of drive.

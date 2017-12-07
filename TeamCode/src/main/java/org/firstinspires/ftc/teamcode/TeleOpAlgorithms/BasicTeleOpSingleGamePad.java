@@ -43,10 +43,10 @@ public class BasicTeleOpSingleGamePad{
 
     protected void chassisPinionControl(Gamepad controller){
         if(controller.dpad_up)
-            main.chassisPinion.setPower(1);
+            main.chassisPinion.invertPower(1);
         else if(controller.dpad_down)
-            main.chassisPinion.setPower(-1);
-        else main.chassisPinion.setPower(0);
+            main.chassisPinion.invertPower(-1);
+        else main.chassisPinion.invertPower(0);
     }
     protected void liftControl(Gamepad controller){
         if(controller.a){
@@ -88,13 +88,13 @@ public class BasicTeleOpSingleGamePad{
 
     protected void relicArmControl(Gamepad controller){
         if(controller.y){
-            main.RelicArm.lift(-.5);
+            main.LinearExtension.lift(-.5);
         } else if(controller.x){
-            main.RelicArm.lift(.5);
+            main.LinearExtension.lift(.5);
         } else if(controller.right_bumper){
-            main.RelicArm.lift(relicClawOpen ? -.2 : -.3);
+            main.LinearExtension.lift(relicClawOpen ? -.2 : -.3);
         }
-        else main.RelicArm.lift(0);
+        else main.LinearExtension.lift(0);
     }
     protected boolean relicClawOpen = false;
     protected void relicClawControl(Gamepad controller){
