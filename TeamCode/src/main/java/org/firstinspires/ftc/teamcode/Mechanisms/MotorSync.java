@@ -43,6 +43,8 @@ public class MotorSync {
 
     }
 
+
+
     public void runToPosition(int... Position){
         for(int i = 0;i < motors.length;i++){
             motors[i].setTargetPosition(Position[i]);

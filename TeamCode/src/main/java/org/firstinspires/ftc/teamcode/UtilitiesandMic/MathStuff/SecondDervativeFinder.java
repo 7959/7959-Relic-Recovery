@@ -8,12 +8,6 @@ import org.firstinspires.ftc.teamcode.RobotControl;
 
 public abstract class SecondDervativeFinder extends Thread {
 
-    public interface dataInput{//Maybe switch to float, check how hard on CPU
-        double getData();
-    }
-
-
-
 
     public SecondDervativeFinder(int deltaT){
         this.deltaT = deltaT;
@@ -60,22 +54,22 @@ public abstract class SecondDervativeFinder extends Thread {
         }
     }
     public void run(){
-
-
         //Uses the second difference formula to estimate the derivative at x1,y1
         while(RobotControl.opMode.opModeIsActive()){
-            dervative = (y1 - 2 * y2 + y0)/(deltaT * deltaT);
+            dervative = (y1 - 2*y2 + y0)/(deltaT * deltaT);
             try {
                 Thread.sleep(deltaT);
             } catch (Exception e){
 
             }
+
             y0 = y1;
             y1 = y2;
             y2 = getData();
 
         }
     }
+
     public double getDervative(){
         return dervative;
     }

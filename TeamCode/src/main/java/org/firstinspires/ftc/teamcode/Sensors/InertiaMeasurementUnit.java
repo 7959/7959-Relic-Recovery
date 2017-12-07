@@ -14,7 +14,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 import org.firstinspires.ftc.teamcode.RobotControl;
 import org.firstinspires.ftc.teamcode.RobotMain;
-import org.firstinspires.ftc.teamcode.UtilitiesandMic.TeamIntegrator;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff.TeamIntegrator;
+
 
 /**
  * Created by Robi on 10/12/2017.
@@ -52,7 +53,7 @@ public class InertiaMeasurementUnit{
     }
 
 
-    protected void setParameters(String name){
+    private void setParameters(String name){
 
 
         BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -85,13 +86,13 @@ public class InertiaMeasurementUnit{
     public void reset(){
 
     }
-    public void retreiveaccelData() {
+    private void retreiveaccelData() {
         accel = imu.getLinearAcceleration();
     }
-    public void retreivePosData(){
+    private void retreivePosData(){
         pos = imu.getPosition();
     }
-    public void retreiveVelData(){
+    private void retreiveVelData(){
         vel = imu.getVelocity();
     }
 

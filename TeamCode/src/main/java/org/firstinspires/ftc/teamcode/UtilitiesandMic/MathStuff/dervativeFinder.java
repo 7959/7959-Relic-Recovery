@@ -8,12 +8,7 @@ import org.firstinspires.ftc.teamcode.RobotControl;
 
 public abstract class dervativeFinder extends Thread {
 
-    public interface dataInput{//Maybe switch to float, check how hard on CPU
-        double getData();
-    }
 
-    
-    
     
     public dervativeFinder(int deltaT){
         this.deltaT = deltaT;

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Opmodes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.AutonAlgorithms.AutonomousAlgorithm;
@@ -9,7 +10,7 @@ import org.firstinspires.ftc.teamcode.UtilitiesandMic.AutonTeam;
 /**
  * Created by Robi on 11/24/2017.
  */
-
+@Autonomous(name = "Red Jewel")
 public class RedJewelOnly extends LinearOpMode {
 
 

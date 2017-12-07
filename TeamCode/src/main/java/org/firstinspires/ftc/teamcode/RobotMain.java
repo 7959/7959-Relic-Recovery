@@ -54,7 +54,7 @@ public class RobotMain {
     public SingleServoControl JewelArm;
     public DistanceNavigation NavSensors;
     public BasicClaw relicClaw;
-    public BasicArm RelicArm;
+    public BasicArm LinearExtension;
 
 
     public static LinearOpMode opMode;
@@ -80,7 +80,7 @@ public class RobotMain {
         this.opMode = opMode;
         this.hwMap = hwMap;
         this.tele = tele;
-        RelicArm = new BasicArm(this.hwMap, "Relic Arm");
+        LinearExtension = new BasicArm(this.hwMap, "Relic Arm");
 
         JewelArm = new SingleServoControl(this.hwMap, "Jewel Arm");
         JewelArm.setClosePos(.65);
