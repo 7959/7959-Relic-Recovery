@@ -12,7 +12,7 @@ public abstract class SecondDervativeFinder extends Thread {
     public SecondDervativeFinder(int deltaT){
         this.deltaT = deltaT;
     }
-    
+
     public abstract double getData();
     private double dervative = 0;
     private double y0;

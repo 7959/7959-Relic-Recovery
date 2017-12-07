@@ -41,7 +41,7 @@ public class JewelArm {
                 crServoControl.invertPower();
             }
         } else {
-            if(!sensor.isRed()){
+            if(sensor.isBlue()){
                 crServoControl.invertPower();
             }
         }

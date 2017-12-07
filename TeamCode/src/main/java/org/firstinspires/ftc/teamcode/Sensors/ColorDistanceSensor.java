@@ -29,9 +29,7 @@ public class ColorDistanceSensor {
         else return false;
     }
     public boolean isBlue(){
-        if(colorSensor.blue() >= colorSensor.red())
-            return true;
-        else return false;
+        return !isRed();
     }
 
     public double getDistance(){
