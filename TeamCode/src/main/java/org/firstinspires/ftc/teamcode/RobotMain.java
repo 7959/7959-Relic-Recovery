@@ -1,25 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
-
-import org.firstinspires.ftc.robotcore.external.Func;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
-import org.firstinspires.ftc.robotcore.external.navigation.Position;
-import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
-import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.Sensors.ColorDistanceSensor;
-import org.firstinspires.ftc.teamcode.Sensors.DistanceNavigation;
-import org.firstinspires.ftc.teamcode.Sensors.InertiaMeasurementUnit;
-import org.firstinspires.ftc.teamcode.UtilitiesandMic.AutonTeam;
-import org.firstinspires.ftc.teamcode.UtilitiesandMic.PosEstimater;
-import org.firstinspires.ftc.teamcode.WheelControl.Wheels;
 
 
 
@@ -30,7 +10,7 @@ import org.firstinspires.ftc.teamcode.WheelControl.Wheels;
  * All sensors, motors, and servos have connections to this class.
  * There are many static objects and variables so unit can easily be changed or to fix constants
  */
-
+@Deprecated
 public class RobotMain {
     /*public final static DistanceUnit distanceUnit = DistanceUnit.METER;
     public final static BNO055IMU.AccelUnit accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;

@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 /**
  * Created by Robi on 11/23/2017.
  */
-
+@Deprecated
 public class GlyphMechanism {
     Servo rotationServo;
     private final double defaultPos = 0;

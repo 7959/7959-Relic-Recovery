@@ -14,14 +14,14 @@ public abstract class WheelControl {
 
     DcMotor[][] MotorWheels = new DcMotor[2][2];
     protected final DcMotor.Direction frontLeftDir = DcMotorSimple.Direction.REVERSE;
-    protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.REVERSE;
+    protected final DcMotor.Direction frontRightDir = DcMotorSimple.Direction.FORWARD;
     protected final DcMotor.Direction backLeftDir = DcMotorSimple.Direction.REVERSE;
-    protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.REVERSE;
-    protected WheelControl(HardwareMap hardwareMap){
-        MotorWheels[0][0] = hardwareMap.dcMotor.get("Back Left");
-        MotorWheels[1][0] = hardwareMap.dcMotor.get("Back Right");
-        MotorWheels[0][1] = hardwareMap.dcMotor.get("Front Left");
-        MotorWheels[1][1] = hardwareMap.dcMotor.get("Front Right");
+    protected final DcMotor.Direction backRightDir = DcMotorSimple.Direction.FORWARD;
+    protected WheelControl(DcMotor backLeft, DcMotor backRight, DcMotor frontLeft, DcMotor frontRight){
+        MotorWheels[0][0] = backLeft;
+        MotorWheels[1][0] = backRight;
+        MotorWheels[0][1] = frontLeft;
+        MotorWheels[1][1] = frontRight;
         setDirection();
         setZeroPowerBehavior();
         activateEncoders();
@@ -55,6 +55,15 @@ public abstract class WheelControl {
         }
     }
 
+
+
+    public void powerOff(){
+        MotorWheels[0][0].setPower(0);
+        MotorWheels[1][0].setPower(0);
+        MotorWheels[0][1].setPower(0);
+        MotorWheels[1][1].setPower(0);
+    }
+
     //Resets all encoders
     public void resetEncoders(){
         for(DcMotor[] motors: MotorWheels){
@@ -64,6 +73,45 @@ public abstract class WheelControl {
         }
         activateEncoders();
     }
+
+    public void backLeftTest(){
+        MotorWheels[0][0].setPower(1);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MotorWheels[0][0].setPower(0);
+    }
+
+    public void backRightTest(){
+        MotorWheels[1][0].setPower(1);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MotorWheels[1][0].setPower(0);
+    }
+    public void frontLeftTest(){
+        MotorWheels[0][1].setPower(1);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MotorWheels[0][1].setPower(0);
+    }
+    public void frontRightTest(){
+        MotorWheels[1][1].setPower(1);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        MotorWheels[1][1].setPower(0);
+    }
+
 
     //Sets the directions of the wheels
     private void setDirection(){

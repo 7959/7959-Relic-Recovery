@@ -12,8 +12,8 @@ import org.firstinspires.ftc.teamcode.RobotMain;
  */
 
 public class ColorDistanceSensor {
-    public ColorSensor colorSensor;
-    public DistanceSensor OptDistance;
+    private ColorSensor colorSensor;
+    private DistanceSensor OptDistance;
 
 
 
@@ -22,14 +22,23 @@ public class ColorDistanceSensor {
         OptDistance = hwmap.get(DistanceSensor.class, name);
     }
 
+    public int getRed(){
+        return colorSensor.red();
+    }
+    public int getBlue(){
+        return colorSensor.blue();
+    }
+
 
     public boolean isRed(){
-        if(colorSensor.red() > colorSensor.blue())
+        if(colorSensor.red() >= colorSensor.blue())
             return true;
         else return false;
     }
     public boolean isBlue(){
-        return !isRed();
+        if(colorSensor.red() < colorSensor.blue())
+            return true;
+        else return false;
     }
 
     public double getDistance(){

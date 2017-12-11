@@ -28,6 +28,8 @@ public class FinalTeleOp extends LinearOpMode {
 
 
         waitForStart();
+        robotControl.jewelArm.initPos();
+
         inputControl.run();
 
         //Continually run the control program in the algorithm

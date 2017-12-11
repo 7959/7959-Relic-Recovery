@@ -9,32 +9,22 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 
 public class ParLift {
-    private DcMotor Motor;
+    private DcMotor motor;
 
-    final double holdPower = .2;
-    private double targetPos = 0;
-    public ParLift(HardwareMap map, DcMotor.RunMode mode){
-        Motor = map.dcMotor.get("Parallelogram Lift");
-        Motor.setMode(mode);
-        Motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-    }
+    final double holdPower = .1;
 
-    public void setPower(double power){
-        Motor.setPower(power);
-    }
-    public void setPos(int pos){
-        Motor.setTargetPosition(pos);
-    }
-    public void holdPower(){
-        Motor.setPower(holdPower);
+    public ParLift(DcMotor motor) {
+        this.motor = motor;
+        
     }
 
-    @Deprecated
-    private class angleHolder extends Thread{
-        public double motorPower = 0;
-        public double angleRatio = .01;
-        @Override
-        public void run() {
-        }
+    public void setPower(double power) {
+        motor.setPower(power);
     }
+
+
+    public void holdPower() {
+        motor.setPower(holdPower);
+    }
+
 }

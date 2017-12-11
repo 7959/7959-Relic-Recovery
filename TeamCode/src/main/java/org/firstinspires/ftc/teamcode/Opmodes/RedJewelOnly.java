@@ -20,14 +20,14 @@ public class RedJewelOnly extends LinearOpMode {
     @Override
     public void runOpMode(){
         RobotControl bot = new RobotControl(this);
+        bot.jewelArm.initPos();
         AutonomousAlgorithm auton = new AutonomousAlgorithm(bot, AutonTeam.REDMIDDLE) {
             @Override
             public void run() {
                 jewelKnock();
             }
         };
+        waitForStart();
         auton.run();
-
-
     }
 }

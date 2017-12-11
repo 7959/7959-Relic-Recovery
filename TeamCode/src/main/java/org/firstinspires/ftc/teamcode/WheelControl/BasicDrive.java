@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.WheelControl;
 
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
@@ -8,8 +9,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class BasicDrive extends WheelControl {
 
-    public BasicDrive(HardwareMap hardwareMap){
-        super(hardwareMap);
+    public BasicDrive(DcMotor backLeft, DcMotor backRight, DcMotor frontLeft, DcMotor frontRight){
+        super(backLeft, backRight, frontLeft, frontRight);
     }
 
 

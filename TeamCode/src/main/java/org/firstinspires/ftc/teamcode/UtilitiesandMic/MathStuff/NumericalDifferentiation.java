@@ -14,7 +14,7 @@ public abstract class NumericalDifferentiation extends Thread{
         this.functionValueAmount = functionValueAmount;
     }
 
-    public abstract double getData();
+    protected abstract double getData();
 
     protected abstract double calculateDerivative();
     private double dervative = 0;

@@ -27,13 +27,13 @@ public class TeleOpControl {
     public void run() {
         while (RobotControl.opMode.opModeIsActive()){
             drive(gamepad1);
-            relicClawRototation(gamepad1);
+            //relicClawRototation(gamepad1);
             liftControl(gamepad2);
             gylphClawControl(gamepad2);
-            relicExtension(gamepad2);
-            relicClaw(gamepad2);
+            rotateControl(gamepad2);
+            //relicExtension(gamepad2);
+            //relicClaw(gamepad2);
         }
-
     }
 
 
@@ -54,7 +54,7 @@ public class TeleOpControl {
         else if(gamepad.left_trigger > .1) targetAngle = 1;
         else targetAngle = -1;
 
-
+        //Speed changing
         if(gamepad.right_bumper) driveMode = driveMode.FAST;
         else{
             if(isSlow) driveMode = driveMode.SLOW;
@@ -74,30 +74,18 @@ public class TeleOpControl {
     }
 
 
-    private byte clawPos = 1;
-    //1 is front 2 is flipped 3 is right angle
     private void gylphClawControl(Gamepad gamepad){
-        if(gamepad.left_trigger > .1 && clawPos != 3){
-            bot.botGylph.setPos(90,0);
-            bot.topGylph.setPos(90,0);
-        } else if(gamepad.left_trigger > .1 && clawPos == 3){
-            bot.botGylph.setPos(0,0);
-            bot.botGylph.setPos(0,0);
-        }
-        if(gamepad.right_trigger > .1 && clawPos == 1){
-            bot.botGylph.setPos(0,90);
-        } else if(gamepad.right_trigger > .1 && clawPos != 1){
-            bot.topGylph.setPos(0,90);
-        }
-        if(gamepad.dpad_up){
-            bot.glyphRotator.setPosition(1);
-            clawPos = 1;
+        if(gamepad.a){
+           // bot.botGylph.close();
+        } else if(gamepad.b){
+            //bot.botGylph.open();
+        } else if(gamepad.x){
+            bot.topGylph.close();
+        } else if(gamepad.y){
+            bot.topGylph.open();
         } else if(gamepad.dpad_down){
-            bot.glyphRotator.setPosition(0);
-            clawPos = 2;
-        } else if(gamepad.dpad_right){
-            bot.glyphRotator.setPosition(.5);
-            clawPos = 3;
+            bot.topGylph.open();
+            //++++++bot.botGylph.open();
         }
 
 
@@ -127,11 +115,20 @@ public class TeleOpControl {
     }
 
     private void liftControl(Gamepad gamepad){
-        if(gamepad.a){
+        if(gamepad.right_trigger > .1){
             bot.parLift.setPower(.5);
-        } else if (gamepad.b){
-            bot.parLift.setPower(0);
+        } else if (gamepad.left_trigger > .1){
+            bot.parLift.setPower(-.1);
+        } else if(gamepad.dpad_up) {
+            bot.parLift.setPower(.7);
         } else bot.parLift.holdPower();
+    }
+    private void rotateControl(Gamepad gamepad){
+        if(gamepad.left_bumper){
+            bot.rotator.reverse();
+        } else if(gamepad.right_bumper){
+            bot.rotator.rotate();
+        } else bot.rotator.powerOff();
     }
 
 
