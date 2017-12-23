@@ -6,8 +6,6 @@ import android.view.View;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.teamcode.RobotControl;
-
 /**
  * Created by Robi on 11/14/2017.
  */
@@ -40,7 +38,7 @@ public class PrettyStuff extends Thread {
     @Override
     public void run(){
 
-        while(RobotControl.opMode.opModeIsActive()){
+        while(RobotUtilities.isActive()){
 
             HSVcolor[0] = changeHue(HSVcolor[0], rateOfChange);
 

@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic;
 
-import org.firstinspires.ftc.teamcode.RobotControl;
+import org.firstinspires.ftc.teamcode.Opmodes.OpMode7959;
 
 /**
  * Created by Robi on 11/1/2017.
@@ -10,7 +10,7 @@ public enum AutonTeam {
 
 
 
-    REDCORNER(-1, 1), BLUECORNOR(1, 1), REDMIDDLE(-1, 1), BLUEMIDDLE(1, 1);
+    REDCORNER(1, 1), BLUECORNOR(1, 1), REDMIDDLE(1, 1), BLUEMIDDLE(1, 1);
     final int xMultiple;
     final int yMultiple;
 
@@ -33,19 +33,19 @@ public enum AutonTeam {
     //The angle relative for the Glyph Boxes
     public double boxAngle(){
         switch (this){
-            case BLUEMIDDLE: switch (RobotControl.angleUnit){
+            case BLUEMIDDLE: switch (OpMode7959.angleUnit){
                 case DEGREES: return 90;
                 case RADIANS: return Math.PI/2;
             }
-            case REDMIDDLE: switch (RobotControl.angleUnit){
+            case REDMIDDLE: switch (OpMode7959.angleUnit){
                 case DEGREES: return -90;
                 case RADIANS: return -Math.PI/2;
             }
-            case BLUECORNOR: switch (RobotControl.angleUnit){
+            case BLUECORNOR: switch (OpMode7959.angleUnit){
                 case DEGREES: return 0;
                 case RADIANS: return 0;
             }
-            case REDCORNER: switch (RobotControl.angleUnit){
+            case REDCORNER: switch (OpMode7959.angleUnit){
                 case DEGREES: return 180;
                 case RADIANS: return Math.PI;
             }

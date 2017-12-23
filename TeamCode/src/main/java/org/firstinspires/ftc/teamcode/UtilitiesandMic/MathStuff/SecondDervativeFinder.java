@@ -1,6 +1,6 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff;
 
-import org.firstinspires.ftc.teamcode.RobotControl;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 
 /**
  * Created by Robi on 11/16/2017.
@@ -55,7 +55,7 @@ public abstract class SecondDervativeFinder extends Thread {
     }
     public void run(){
         //Uses the second difference formula to estimate the derivative at x1,y1
-        while(RobotControl.opMode.opModeIsActive()){
+        while(RobotUtilities.isActive()){
             dervative = (y1 - 2*y2 + y0)/(deltaT * deltaT);
             try {
                 Thread.sleep(deltaT);

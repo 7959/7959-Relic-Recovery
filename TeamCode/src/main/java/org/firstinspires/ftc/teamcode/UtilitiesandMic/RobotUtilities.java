@@ -1,18 +1,43 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Func;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
+import java.util.ArrayList;
 
 /**
  * Created by Robi on 10/9/2017.
  */
 
 public final class RobotUtilities {
-    RobotUtilities(){
+    public static LinearOpMode opMode;
+    RobotUtilities(LinearOpMode opMode){
+        this.opMode = opMode;
+    }
 
+    public static void setOpMode(LinearOpMode LopMode){
+        opMode = LopMode;
+    }
+
+    public static boolean isActive(){
+        return opMode.opModeIsActive();
+    }
+
+    public static HardwareMap hardwareMap(){
+        return opMode.hardwareMap;
+    }
+
+    public static void sleep(long milliseconds){
+        opMode.sleep(milliseconds);
+    }
+
+    public static void print(String caption,String message) {
+        opMode.telemetry.addData(caption, message);
+        opMode.telemetry.update();
     }
 
 

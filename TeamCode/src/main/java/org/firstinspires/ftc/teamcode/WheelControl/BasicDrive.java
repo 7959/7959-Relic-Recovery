@@ -14,8 +14,9 @@ public class BasicDrive extends WheelControl {
     }
 
 
-
-    //We used to use trig to calculate motor powers, but when optimizing this. We realized it isn't worth the processing power
+    /**We used to use trig to calculate motor powers, but when optimizing this. We realized it isn't worth the processing power
+     * x and y the magnitude of the corresponding direction
+     */
     @Override
     public void movebyCart(double x, double y, double turnMag) {
         MotorWheels[0][0].setPower(y + x + turnMag);

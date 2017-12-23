@@ -1,18 +1,10 @@
 [
     {
-        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\button_shape.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\18ab65f8185daf1c7bc82bb63dae81b7b3b52772\\output\\res\\drawable-hdpi-v4\\button_shape.xml"
-    },
-    {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\button_shape.xml",
-        "source": "C:\\Users\\Robi\\.android\\build-cache\\eead95e33a5ce0daa4f55d6db4d65eba10f47433\\output\\res\\drawable-hdpi-v4\\button_shape.xml"
+        "source": "C:\\Users\\Robi\\.android\\build-cache\\5ebd6e767f72f68b5eef6938db03abe47affe496\\output\\res\\drawable-hdpi-v4\\button_shape.xml"
     },
     {
         "merged": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\Robi\\Desktop\\Robotics\\2017-2018 Programs\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",
-        "source": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\FtcRobotController\\build\\intermediates\\bundles\\default\\res\\drawable-hdpi-v4\\ic_launcher.png"
     }
 ]

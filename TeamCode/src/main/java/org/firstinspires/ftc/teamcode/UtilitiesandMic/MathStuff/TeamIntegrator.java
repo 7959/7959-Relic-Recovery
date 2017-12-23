@@ -9,8 +9,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.RobotControl;
-import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.Opmodes.OpMode7959;
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 
 /**
  * Created by Robi on 10/20/2017.
@@ -23,7 +23,7 @@ public class TeamIntegrator implements BNO055IMU.AccelerationIntegrator {
     private Position Pos;
 
 
-    private final DistanceUnit distanceUnit = RobotControl.distanceUnit;
+    private final DistanceUnit distanceUnit = OpMode7959.distanceUnit;
 
     private Acceleration prevAcel;
     private Velocity prevVel;
@@ -61,7 +61,7 @@ public class TeamIntegrator implements BNO055IMU.AccelerationIntegrator {
         Accel = linearAcceleration;
         if(Accel.acquisitionTime == 0) return;
         double t = Accel.acquisitionTime - prevAcel.acquisitionTime;
-        RobotControl.opMode.telemetry.addData("time", t);
+        RobotUtilities.opMode.telemetry.addData("time", t);
         Vel.xVeloc += (Accel.xAccel + prevAcel.xAccel) * .5 * t;
         Vel.yVeloc += (Accel.yAccel + prevAcel.yAccel) * .5 * t;
         Vel.zVeloc += (Accel.zAccel + prevAcel.zAccel) * .5 * t;

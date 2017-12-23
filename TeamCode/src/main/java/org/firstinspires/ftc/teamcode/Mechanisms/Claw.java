@@ -32,6 +32,13 @@ public class Claw {
         servo1.setPosition(openPos[0]);
         servo2.setPosition(openPos[1]);
     }
+    public double getServo1(){
+        return servo1.getPosition();
+    }
+
+    public double getServo2(){
+        return servo2.getPosition();
+    }
 
 
     public void setClosePos(double... closePos) {

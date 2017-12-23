@@ -43,6 +43,12 @@ public class MotorSync {
 
     }
 
+    public void setPower(double power){
+        for(DcMotor motor: motors){
+            motor.setPower(power);
+        }
+    }
+
 
 
     public void runToPosition(int... Position){

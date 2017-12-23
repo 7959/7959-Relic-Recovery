@@ -12,33 +12,7 @@
                     "endOffset": 187
                 },
                 "from": {
-                    "file": "C:\\Users\\Robi\\.android\\build-cache\\2047103834c8da8a8922398b34a6e3c67e961ad4\\output\\res\\values-v11\\values-v11.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endLine": 4,
-                        "endColumn": 12,
-                        "endOffset": 187
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\Robi\\Programming\\Robotics\\7959-Relic-Recovery\\TeamCode\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v11\\values-v11.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endLine": 4,
-                    "endColumn": 12,
-                    "endOffset": 187
-                },
-                "from": {
-                    "file": "C:\\Users\\Robi\\.android\\build-cache\\18957c1df046ea9a026047713fa41ed60a9a981a\\output\\res\\values-v11\\values-v11.xml",
+                    "file": "C:\\Users\\Robi\\.android\\build-cache\\0755fd5b5e83727a451f86b00bcc097b8f87a806\\output\\res\\values-v11\\values-v11.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,

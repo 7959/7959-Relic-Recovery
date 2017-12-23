@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff;
 
-import org.firstinspires.ftc.teamcode.RobotControl;
+
+import org.firstinspires.ftc.teamcode.UtilitiesandMic.RobotUtilities;
 
 /**
  * Created by Robi on 12/6/2017.
@@ -37,7 +38,7 @@ public abstract class NumericalDifferentiation extends Thread{
         }
     }
     public void run(){
-        while(RobotControl.opMode.opModeIsActive()){
+        while(RobotUtilities.opMode.opModeIsActive()){
             init();
             dervative = calculateDerivative();
             try {

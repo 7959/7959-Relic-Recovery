@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Sensors;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
@@ -12,8 +11,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
-import org.firstinspires.ftc.teamcode.RobotControl;
-import org.firstinspires.ftc.teamcode.RobotMain;
+import org.firstinspires.ftc.teamcode.Opmodes.OpMode7959;
 import org.firstinspires.ftc.teamcode.UtilitiesandMic.MathStuff.TeamIntegrator;
 
 
@@ -36,8 +34,8 @@ public class InertiaMeasurementUnit{
     public Acceleration accel;
     public Position pos;
     public Velocity vel;
-    final DistanceUnit distanceUnit = RobotControl.distanceUnit;
-    final AngleUnit angleUnit = RobotControl.angleUnit;
+    final DistanceUnit distanceUnit = OpMode7959.distanceUnit;
+    final AngleUnit angleUnit = OpMode7959.angleUnit;
 
     private TeamIntegrator integrator = new TeamIntegrator();
 
@@ -58,7 +56,7 @@ public class InertiaMeasurementUnit{
 
         BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         BNO055IMU.AngleUnit IMUangleUnit;
-        switch (RobotControl.angleUnit){
+        switch (OpMode7959.angleUnit){
             case DEGREES: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
             case RADIANS: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
                 default: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;
