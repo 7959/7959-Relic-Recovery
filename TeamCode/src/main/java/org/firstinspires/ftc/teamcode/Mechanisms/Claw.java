@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class Claw {
-    private Servo servo1;
-    private Servo servo2;
+    private final Servo servo1;
+    private final Servo servo2;
 
     private double closePos[];
     private double openPos[];

@@ -8,9 +8,9 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 
 public class JewelArm {
-    Servo sweepServo;
-    Servo downServo;
-    ColorSensor sensor;
+    final Servo sweepServo;
+    final Servo downServo;
+    final ColorSensor sensor;
     
     public JewelArm(Servo sweepServo, Servo downServo, ColorSensor sensor){
         this.sweepServo = sweepServo;

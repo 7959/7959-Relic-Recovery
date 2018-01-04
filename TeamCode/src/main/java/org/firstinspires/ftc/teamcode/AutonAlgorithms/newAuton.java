@@ -99,15 +99,17 @@ public abstract class newAuton {
         chassisWedge.wedgeServoPos(0);
         RobotUtilities.sleep(250);
 
-
-
-
-
-
     }
 
 
     private void passSide(){
-
+        chassisWedge.down();
+        RobotUtilities.sleep(200);
+        RobotUtilities.startFailsafeTimer(4000);
+        while (!chassisWedge.sideinFront() && RobotUtilities.isActive()&& RobotUtilities.timeFailsafe()){//TODO FIND DIFFERING POWERS FOR EACH TEAM LATER
+            drive.movebyCart(.1,0,0);
+        }
+        chassisWedge.up();
+        RobotUtilities.sleep(200);
     }
 }

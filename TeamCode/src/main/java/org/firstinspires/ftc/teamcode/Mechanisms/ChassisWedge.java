@@ -20,6 +20,13 @@ public class ChassisWedge {
         this.colorSensor = colorSensor;
         this.distanceSensor = distanceSensor;
     }
+    public void up(){
+        wedgeServo.setPosition(0);
+    }
+    //TODO Test servo Posiions
+    public void down(){
+        wedgeServo.setPosition(.5);
+    }
 
     public void wedgeServoPos(double pos){
         wedgeServo.setPosition(pos);
@@ -33,5 +40,9 @@ public class ChassisWedge {
 
     public double getDistance(){
         return distanceSensor.getDistance(OpMode7959.distanceUnit);
+    }
+
+    public boolean sideinFront(){//TODO find sensor distance needed
+        return getDistance() > 2 ? true : false;
     }
 }

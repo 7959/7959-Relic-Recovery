@@ -39,6 +39,18 @@ public final class RobotUtilities {
         opMode.telemetry.addData(caption, message);
         opMode.telemetry.update();
     }
+    private static long failSafeFailTime;
+
+    public static void startFailsafeTimer(long miliseconds) {
+        failSafeFailTime = System.currentTimeMillis() + miliseconds;
+    }
+    public static boolean timeFailsafe(){
+        if(failSafeFailTime < System.currentTimeMillis()){
+            failsafeTrigged = true;
+            return true;
+        } else return false;
+    }
+    public static boolean failsafeTrigged = false;
 
 
 

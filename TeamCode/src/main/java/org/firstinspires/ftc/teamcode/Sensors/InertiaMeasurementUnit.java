@@ -56,6 +56,7 @@ public class InertiaMeasurementUnit{
 
         BNO055IMU.AccelUnit IMUaccelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         BNO055IMU.AngleUnit IMUangleUnit;
+
         switch (OpMode7959.angleUnit){
             case DEGREES: IMUangleUnit = BNO055IMU.AngleUnit.DEGREES;
             case RADIANS: IMUangleUnit = BNO055IMU.AngleUnit.RADIANS;

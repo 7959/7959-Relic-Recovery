@@ -10,7 +10,7 @@ public enum AutonTeam {
 
 
 
-    REDCORNER(1, 1), BLUECORNOR(1, 1), REDMIDDLE(1, 1), BLUEMIDDLE(1, 1);
+    REDCORNER(1, 1), BLUECORNOR(1, 1), REDMIDDLE(1, 1), BLUEMIDDLE(1, 1);// Find sign changes after tests
     final int xMultiple;
     final int yMultiple;
 
@@ -28,10 +28,10 @@ public enum AutonTeam {
 
         return power;
     }
-
+    final double boxAngle = boxAngle();
 
     //The angle relative for the Glyph Boxes
-    public double boxAngle(){
+    private double boxAngle(){
         switch (this){
             case BLUEMIDDLE: switch (OpMode7959.angleUnit){
                 case DEGREES: return 90;
